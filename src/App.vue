@@ -1144,9 +1144,13 @@ export default {
           })
         } else {
           if (response.html) {
-            $vm.html.transformed = response.html;
+            $vm.html.transformed = response.html
+
+            if (process.env.NODE_ENV == 'development') {
+              window.ga('send', 'event', 'Transformation', 'transform')
+            }
           }
-          $vm.altering = false;
+          $vm.altering = false
         }
       })
     },
