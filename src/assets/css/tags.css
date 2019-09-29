@@ -1,0 +1,37 @@
+/* purgecss start ignore */
+.tags-input {
+  @apply w-full mb-8 py-1;
+}
+
+.tags-input-tag {
+  @apply inline-flex leading-none items-center text-sm font-semibold bg-green-500 text-white rounded py-1 px-2 mr-2 mb-1;
+}
+
+.tags-input-tag:last-of-type {
+  @apply mr-0;
+}
+
+.tags-input-remove {
+  @apply text-white;
+}
+
+.tags-input-remove:hover {
+  @apply text-green-700;
+}
+
+.tags-input-remove:first-child {
+  @apply mr-1;
+}
+
+.tags-input-remove:last-child {
+  @apply ml-1;
+}
+
+.tags-input-remove:focus {
+  @apply outline-none;
+}
+
+.tags-input-text {
+  @apply flex-1 outline-none py-1 ml-2 mb-1;
+}
+/* purgecss end ignore */

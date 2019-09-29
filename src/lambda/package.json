@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "functions",
+  "description": "Netlify functions",
+  "dependencies": {
+    "color-shorthand-hex-to-six-digit": "^2.10.43",
+    "cheerio": "0.22.0",
+    "email-comb": "^3.8.1",
+    "html-crush": "^1.9.2",
+    "is-url-superb": "^3.0.0",
+    "juice": "^5.2.0",
+    "pretty": "^2.0.0",
+    "query-string": "^6.8.3"
+  }
+}

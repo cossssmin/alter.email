@@ -1,0 +1,195 @@
+[v-cloak] {
+  @apply hidden;
+}
+
+.bg-gradient-maizzle {
+  background: url('https://maizzle.com/images/escheresque.png'), linear-gradient(-90deg, #5f54f1, #4398ee);
+}
+
+.btn-process {
+  @apply px-6 py-2 text-purple-800 bg-white shadow text-xs font-bold uppercase rounded;
+}
+
+.btn-process.disabled {
+  @apply opacity-25 pointer-events-none select-none;
+}
+
+.btn-process.busy {
+  @apply mt-px -mb-px pointer-events-none shadow-md opacity-75;
+  background: linear-gradient(270deg,#ffed4a,#f2d024);
+}
+
+.btn-process:hover {
+  @apply shadow-md;
+  background: linear-gradient(270deg,#ffed4a,#f2d024);
+}
+
+.btn-process:focus {
+  @apply outline-none;
+}
+
+.btn-process:active {
+  @apply mt-px -mb-px;
+}
+
+.gutter {
+  @apply bg-gray-300 flex items-center;
+  cursor: e-resize;
+}
+
+.gutter-horizontal::before {
+  @apply text-gray-600 bg-gray-100 border border-gray-300 border-solid text-center rounded z-50;
+  content: '⋮';
+  margin-left: -3px;
+  padding: 12px 2px;
+  text-orientation: mixed;
+  word-break: break-all;
+}
+
+.gutter-horizontal:hover {
+  @apply bg-gray-400;
+}
+
+.gutter-horizontal:hover::before {
+  @apply text-gray-700 border-gray-400;
+}
+
+.CodeMirror {
+  @apply h-full !important;
+  @apply pt-4 rounded-bl rounded-br rounded-tr;
+}
+
+.CodeMirror-code {
+  @apply leading-relaxed;
+}
+
+.cm-s-github .CodeMirror-linenumber {text-align: center;}
+
+/*
+  Enable the mark-selection plugin first, in order to
+  customize background and color for selected text.
+*/
+.cm-s-github .CodeMirror-selected {background: rgba(50, 151, 253, 1);}
+.cm-s-github span.CodeMirror-selectedtext {color: #fff;}
+
+.iframe-width-helper {
+  @apply absolute mb-10 ml-6 bottom-0 px-3 py-2 rounded text-white text-xs;
+  background-color: rgba(0,0,0,0.5);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: inherit;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-input {
+  @apply bg-transparent px-4 py-3 outline-none w-full;
+}
+
+.form-input + label {
+  @apply absolute left-0 pl-4 pt-3;
+  transition: all .3s ease;
+}
+
+.form-input:not(:placeholder-shown) + label {
+  @apply text-sm opacity-50;
+  transform: translateY(-1.5rem);
+}
+
+.form-input::-webkit-input-placeholder {color: transparent;}
+.form-input:-moz-placeholder {color: transparent;}
+.form-input::-moz-placeholder {color: transparent;}
+.form-input:-ms-input-placeholder {color: transparent;}
+
+.checkbox-toggle {
+  @apply flex relative h-4 leading-none;
+}
+
+.checkbox-toggle .switch {
+  @apply hidden;
+}
+
+.checkbox-toggle input:empty ~ label {
+	@apply text-black cursor-pointer pl-12;
+}
+
+.checkbox-toggle input:empty ~ label:before,
+.checkbox-toggle input:empty ~ label:after {
+  @apply absolute block;
+  content: ' ';
+}
+
+.checkbox-toggle input:empty ~ label:before {
+  @apply bg-gray-300 left-0 w-8 h-3 rounded-lg;
+  top: 3px;
+}
+
+input.switch:empty ~ label:after {
+  @apply rounded-full w-5 h-5 bg-white border-2 border-white;
+  top: -2px;
+  left: -8px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.2),0 1px 8px 0 rgba(0,0,0,.12);
+}
+
+.checkbox-toggle input:checked ~ label:before {
+	background-color: #4398ee;
+}
+
+.checkbox-toggle input:checked ~ label:after {
+	left: 20px;
+}
+
+.inline-code {
+  @apply text-xs bg-gray-200 px-1 py-px rounded;
+}
+
+.swal2-title {
+  @apply italic m-0 !important;
+}
+
+.swal2-content {
+  @apply text-base text-gray-600 !important;
+}
+
+.swal2-footer {
+  @apply block text-xs text-gray-500 text-center leading-relaxed !important;
+}
+
+.swal2-footer a {
+  @apply underline !important;
+}
+
+.swal2-footer a:hover {
+  @apply no-underline !important;
+}
+
+.transformer--active {
+  @apply text-blue-500 cursor-default relative;
+}
+
+.transformer--active::before {
+  content: "";
+  @apply w-0 h-0 border-solid absolute z-50;
+  border-width: 0 7px 8px 7px;
+  border-color: transparent transparent #fff transparent;
+  left: calc(50% - 7px);
+  bottom: -1px;
+}
+
+.transformer--active::after {
+  content: "";
+  @apply w-0 h-0 border-solid absolute z-40;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #e2e8f0 transparent;
+  left: calc(50% - 10px);
+  bottom: -1px;
+}

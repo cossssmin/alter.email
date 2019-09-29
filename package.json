@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build:lambda": "cd src/lambda && npm install && cd ../../ && netlify-lambda build src/lambda"
+  },
+  "dependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "codemirror-theme-github": "^1.0.0",
+    "netlify-lambda": "^1.6.3",
+    "postcss-import": "^12.0.1",
+    "split.js": "^1.5.11",
+    "sweetalert2": "^8.17.1",
+    "tailwindcss": "^1.1.2",
+    "vue": "^2.6.10",
+    "vue-codemirror-lite": "^1.0.4"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "vue-cli-plugin-netlify-lambda": "^0.1.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}

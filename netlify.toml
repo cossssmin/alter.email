@@ -1,0 +1,5 @@
+[build]
+
+functions = "./functions"
+publish = "dist"
+command = "npm run build && npm run build:lambda"
