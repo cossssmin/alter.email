@@ -2,6 +2,8 @@
 
 Source code of [alter.email](https://alter.email) - a tool for transforming HTML emails.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/00c6e7b4-0cbd-4dd9-a4e1-dee35caafa1f/deploy-status)](https://app.netlify.com/sites/alteremail/deploys)
+
 ## Getting Started
 
 ### Clone this repository:
