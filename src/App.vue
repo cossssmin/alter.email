@@ -1146,8 +1146,8 @@ export default {
           if (response.html) {
             $vm.html.transformed = response.html
 
-            if (process.env.NODE_ENV == 'development') {
-              window.ga('send', 'event', 'Transformation', 'transform')
+            if (process.env.NODE_ENV !== 'development') {
+              window.ga('send', 'event', 'Transformation', 'transform', 'Transformations', response.transforms)
             }
           }
           $vm.altering = false

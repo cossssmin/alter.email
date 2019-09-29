@@ -29,8 +29,11 @@ exports.handler = async function (event, context, callback) {
     })
   }
 
+  let transforms = 0
+
   // CSS Inliner
   if (config && config.inliner.enabled) {
+    transforms++
     html = juice(html, config.inliner.options)
   }
 
@@ -39,21 +42,27 @@ exports.handler = async function (event, context, callback) {
 
   if (removeUnusedCSS && removeUnusedCSS.options && removeUnusedCSS.options.enabled) {
     html = comb(html, removeUnusedCSS.options).result
+    transforms++
   }
 
   // Six digit HEX
   if (config.cleaner.tools.sixDigitHEX.enabled) {
     html = sixHex(html)
+    transforms++
   }
 
   // Extra Attributes
   if (config.extraAttributes.elements.length > 0) {
     let $ = cheerio.load(html, { decodeEntities: false })
+    let attributeApplied = false
 
     config.extraAttributes.elements.forEach(el => {
       if (el.name.length > 0) {
         let $el = $(el.name)
         el.attributes.forEach(attr => {
+          if (attr.value.length > 0) {
+            attributeApplied = true
+          }
           if (attr.name == 'class') {
             return $el.addClass(attr.value)
           }
@@ -63,18 +72,23 @@ exports.handler = async function (event, context, callback) {
     })
 
     html = $.html()
+
+    if (attributeApplied) {
+      transforms++
+    }
   }
 
   // Base Image URL
   const baseImageURL = config.urls.items.baseImageURL.url
   if (baseImageURL && isUrl(baseImageURL)) {
-    html = html.replace(/(background="|src=")(?!\s+|url\('?'?\)|"|https?:\/\/)\/?/ig, '$1' + baseImageURL)
-                .replace(/(background(-image)?:\s?url\('?)(?!['\)]|https?:\/\/)\/?/ig, '$1' + baseImageURL)
+    html = html.replace(/(background="|src=")(?!\s+|url\('?'?\)|"|https?:\/\/)\/?/ig, '$1' + baseImageURL).replace(/(background(-image)?:\s?url\('?)(?!['\)]|https?:\/\/)\/?/ig, '$1' + baseImageURL)
+    transforms++
   }
 
   // URL Parameters
   if (config.urls.items.urlParameters.pairs.length > 0) {
     let $ = cheerio.load(html, { decodeEntities: false })
+    let paramsApplied = 0
 
     $('a').each((i, el) => {
       let url = $(el).attr('href')
@@ -88,6 +102,7 @@ exports.handler = async function (event, context, callback) {
 
       config.urls.items.urlParameters.pairs.forEach(pair => {
         params[pair.key] = pair.encode ? encodeURIComponent(pair.value) : pair.value
+        pair.value.length > 0 ? paramsApplied++ : paramsApplied--
       })
 
       params = qs.stringify(params, {encode: false})
@@ -96,16 +111,22 @@ exports.handler = async function (event, context, callback) {
     })
 
     html = $.html()
+
+    if (paramsApplied.length > 0) {
+      transforms++
+    }
   }
 
   // Prettify
   if (config.prettify.enabled) {
     html = prettify(html, config.prettify.options)
+    transforms++
   }
 
   // Minify
   if (config.minify.enabled) {
     html = crush(html, config.minify.options).result
+    transforms++
   }
 
   // Replace Strings
@@ -116,12 +137,14 @@ exports.handler = async function (event, context, callback) {
       let r = new RegExp(pair.from, 'gi')
       html = html.replace(r, pair.to)
     })
+    transforms++
   }
 
   return callback(null, {
     statusCode: 200,
     body: JSON.stringify({
-      html: html
+      html: html,
+      transforms: transforms
     }),
   })
 }
