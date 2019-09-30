@@ -19,7 +19,7 @@
 }
 
 .logo:hover svg {
-  transform: scale(1.2)
+  transform: scale(1.2) rotate(90deg);
 }
 
 .btn-process {
@@ -169,11 +169,20 @@ input.switch:empty ~ label:after {
 }
 
 .swal2-title {
-  @apply italic m-0 !important;
+  @apply text-4xl italic mb-6 mt-2 !important;
+}
+
+.modal-logo {
+  @apply fill-current w-10 text-blue-500;
+  transition: all 0.25s ease 0s;
+}
+
+.modal-logo:hover {
+  transform: scale(1.4) rotate(90deg);
 }
 
 .swal2-content {
-  @apply text-base text-gray-600 !important;
+  @apply text-base text-gray-600 mb-4 !important;
 }
 
 .swal2-footer {
