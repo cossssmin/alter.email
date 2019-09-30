@@ -5,6 +5,7 @@
   "dependencies": {
     "color-shorthand-hex-to-six-digit": "^2.10.43",
     "cheerio": "0.22.0",
+    "detergent": "^5.0.1",
     "email-comb": "^3.8.1",
     "html-crush": "^1.9.2",
     "is-url-superb": "^3.0.0",

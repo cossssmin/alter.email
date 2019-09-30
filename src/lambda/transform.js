@@ -3,6 +3,7 @@ import { comb } from 'email-comb'
 import cheerio from 'cheerio'
 import qs from 'query-string'
 import prettify from 'pretty'
+import { det } from 'detergent'
 import { crush } from 'html-crush'
 import isUrl from 'is-url-superb'
 import sixHex from 'color-shorthand-hex-to-six-digit'
@@ -126,6 +127,12 @@ exports.handler = async function (event, context, callback) {
   // Minify
   if (config.minify.enabled) {
     html = crush(html, config.minify.options).result
+    transforms++
+  }
+
+  // Detergent
+  if (config.cleaner.tools.detergent.enabled) {
+    html = det(html, config.cleaner.tools.detergent.options).res
     transforms++
   }
 
