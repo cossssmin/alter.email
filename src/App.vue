@@ -1290,11 +1290,10 @@ export default {
       $vm.submitToServer().then(response => {
         if (response.error) {
           Swal.fire({
-            title: 'Well, 💩.',
-            html: `<em>${JSON.stringify(response.error) || 'Something went wrong, the HTML was not processed.'}</em>`,
+            title: 'Well, 💩',
+            html: `<p>Something went wrong, the HTML was not processed.</p>`,
             footer: `
               <span class="text-sm text-gray-600">
-                The email was not processed.
                 If this looks like a bug, please <a href="https://github.com/cossssmin/alter.email/issues" target="_blank" class="text-blue-500 hover:underline">open an issue</a>.
               </span>
             `,
