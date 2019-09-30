@@ -6,6 +6,22 @@
   background: url('https://maizzle.com/images/escheresque.png'), linear-gradient(-90deg, #5f54f1, #4398ee);
 }
 
+.logo {
+  @apply text-xl font-semibold italic mr-4 h-12 cursor-pointer;
+}
+
+.logo a {
+  @apply text-white flex;
+}
+
+.logo svg {
+  transition: all 0.3s ease 0s;
+}
+
+.logo:hover svg {
+  transform: scale(1.2)
+}
+
 .btn-process {
   @apply px-6 py-2 text-purple-800 bg-white shadow text-xs font-bold uppercase rounded;
 }

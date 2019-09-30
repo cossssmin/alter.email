@@ -2,9 +2,9 @@
   <div id="app" class="flex h-screen bg-gradient-maizzle p-4">
     <div class="flex flex-wrap w-full h-app">
       <div class="flex justify-between w-full mb-2">
-        <h1 class="text-xl font-semibold italic mr-4 h-12 cursor-pointer">
-          <a @click.prevent="openAbout()" href="https://alter.email" class="text-gray-100 flex">
-            <img src="/transform.svg" alt="" class="w-8 mr-2">
+        <h1 class="logo">
+          <a href="https://alter.email" @click.prevent="openAbout()">
+            <svg class="fill-current w-8 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><path d="M 17 0 C 13.101563 0 9.699219 2.5 8.5 6 L 9 6 C 9.601563 6 10.09375 6.09375 10.59375 6.09375 C 11.695313 3.695313 14.199219 2 17 2 C 20.898438 2 24 5.101563 24 9 C 24 11.800781 22.304688 14.304688 19.90625 15.40625 C 20.007813 15.90625 20 16.5 20 17 L 20 17.5 C 23.5 16.300781 26 12.898438 26 9 C 26 4 22 0 17 0 Z M 20.5 5.5 L 15.09375 6.3125 L 16.6875 7.875 L 9.375 15.1875 L 7.8125 13.59375 L 7.09375 18.90625 L 12.40625 18.1875 L 10.8125 16.625 L 18.125 9.3125 L 19.6875 10.90625 Z M 9 8 C 4 8 0 12 0 17 C 0 22 4 26 9 26 C 14 26 18 22 18 17 C 18 15.398438 17.605469 13.988281 16.90625 12.6875 L 15.40625 14.1875 C 15.804688 14.988281 16 16 16 17 C 16 20.898438 12.898438 24 9 24 C 5.101563 24 2 20.898438 2 17 C 2 13.101563 5.101563 10 9 10 C 10 10 11.011719 10.195313 11.8125 10.59375 L 13.3125 9.09375 C 12.011719 8.394531 10.601563 8 9 8 Z"></path></svg>
             alter.email
           </a>
         </h1>
@@ -1052,14 +1052,14 @@ export default {
   methods: {
     openAbout () {
       Swal.fire({
-        title: `<span class="flex flex-col items-center"><img src="/transform.svg" alt="" class="w-10 mb-2"> alter.email</span>`,
+        title: `<span class="flex flex-col-reverse items-center">alter.email<svg class="fill-current w-10 text-purple-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><path d="M17 0c-3.8984 0-7.3008 2.5-8.5 6H9c.6016 0 1.0938.0938 1.5938.0938C11.6952 3.6953 14.1991 2 17 2c3.8984 0 7 3.1016 7 7 0 2.8008-1.6953 5.3047-4.0938 6.4063C20.0079 15.9063 20 16.5 20 17v.5c3.5-1.1992 6-4.6016 6-8.5 0-5-4-9-9-9zm3.5 5.5l-5.4063.8125 1.5938 1.5625-7.3125 7.3125-1.5625-1.5938-.7188 5.3125 5.3125-.7187-1.5937-1.5625 7.3125-7.3125 1.5625 1.5938zM9 8c-5 0-9 4-9 9s4 9 9 9 9-4 9-9c0-1.6016-.3945-3.0117-1.0938-4.3125l-1.5 1.5C15.8048 14.9883 16 16 16 17c0 3.8984-3.1016 7-7 7s-7-3.1016-7-7 3.1016-7 7-7c1 0 2.0117.1953 2.8125.5938l1.5-1.5C12.0117 8.3944 10.6015 8 9 8z"/></svg></span>`,
         html: `Transform your HTML emails`,
         footer: `
             <p>
-              A project by <a href="https://twitter.com/cossssmin" target="_blank" rel="noopener noreferrer">@cossssmin</a>.
-              Source code on <a href="https://github.com/cossssmin/alter.email" rel="noopener noreferrer">GitHub</a>.
+              A project by <a href="https://twitter.com/cossssmin" rel="noopener noreferrer" target="_blank">@cossssmin</a>.
+              Source code on <a href="https://github.com/cossssmin/alter.email" rel="noopener noreferrer" target="_blank">GitHub</a>.
             </p>
-            <p>Powered by <a href="https://maizzle.com" rel="noopener noreferrer">Maizzle</a>, hosted with <a href="https://www.netlify.com/" rel="noopener noreferrer">Netlify</a>.</p>
+            <p>Powered by <a href="https://maizzle.com" rel="noopener noreferrer" target="_blank">Maizzle</a>, hosted with <a href="https://www.netlify.com/" rel="noopener noreferrer" target="_blank">Netlify</a>.</p>
         `,
         showConfirmButton: false,
         showCloseButton: true,
