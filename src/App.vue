@@ -1214,8 +1214,8 @@ export default {
   methods: {
     openAbout () {
       Swal.fire({
-        title: `<span class="flex flex-col-reverse items-center">alter.email<svg class="fill-current w-10 text-purple-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><path d="M17 0c-3.8984 0-7.3008 2.5-8.5 6H9c.6016 0 1.0938.0938 1.5938.0938C11.6952 3.6953 14.1991 2 17 2c3.8984 0 7 3.1016 7 7 0 2.8008-1.6953 5.3047-4.0938 6.4063C20.0079 15.9063 20 16.5 20 17v.5c3.5-1.1992 6-4.6016 6-8.5 0-5-4-9-9-9zm3.5 5.5l-5.4063.8125 1.5938 1.5625-7.3125 7.3125-1.5625-1.5938-.7188 5.3125 5.3125-.7187-1.5937-1.5625 7.3125-7.3125 1.5625 1.5938zM9 8c-5 0-9 4-9 9s4 9 9 9 9-4 9-9c0-1.6016-.3945-3.0117-1.0938-4.3125l-1.5 1.5C15.8048 14.9883 16 16 16 17c0 3.8984-3.1016 7-7 7s-7-3.1016-7-7 3.1016-7 7-7c1 0 2.0117.1953 2.8125.5938l1.5-1.5C12.0117 8.3944 10.6015 8 9 8z"/></svg></span>`,
-        html: `Transform your HTML emails`,
+        title: `<span class="flex flex-col-reverse items-center"><span class="text-base font-normal">Transform your HTML emails</span> alter.email <svg class="modal-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><path d="M17 0c-3.8984 0-7.3008 2.5-8.5 6H9c.6016 0 1.0938.0938 1.5938.0938C11.6952 3.6953 14.1991 2 17 2c3.8984 0 7 3.1016 7 7 0 2.8008-1.6953 5.3047-4.0938 6.4063C20.0079 15.9063 20 16.5 20 17v.5c3.5-1.1992 6-4.6016 6-8.5 0-5-4-9-9-9zm3.5 5.5l-5.4063.8125 1.5938 1.5625-7.3125 7.3125-1.5625-1.5938-.7188 5.3125 5.3125-.7187-1.5937-1.5625 7.3125-7.3125 1.5625 1.5938zM9 8c-5 0-9 4-9 9s4 9 9 9 9-4 9-9c0-1.6016-.3945-3.0117-1.0938-4.3125l-1.5 1.5C15.8048 14.9883 16 16 16 17c0 3.8984-3.1016 7-7 7s-7-3.1016-7-7 3.1016-7 7-7c1 0 2.0117.1953 2.8125.5938l1.5-1.5C12.0117 8.3944 10.6015 8 9 8z"/></svg></span>`,
+        html: `A free tool to help you inline CSS, remove unused CSS, clean up your text, add extra attributes, add URL tracking parameters, minify, and even prettify HTML email.`,
         footer: `
             <p>
               A project by <a href="https://twitter.com/cossssmin" rel="noopener noreferrer" target="_blank">@cossssmin</a>.
