@@ -48,6 +48,10 @@ Uses the [Juice](https://github.com/Automattic/juice) library to inline your emb
 
     Uses [email-comb](https://www.npmjs.com/package/email-comb) to remove unused CSS.
 
+- **Text Cleanup**
+
+    Uses [detergent](https://www.npmjs.com/package/detergent) to help clean up your text.
+
 - **Replace strings**
 
     Batch replace strings in your HTML email. Regex supported.
