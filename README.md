@@ -68,7 +68,7 @@ Add any number of attributes to any elements in your HTML. Tag names can also be
 
 - **Base Image URL**
 
-    Define a base URL that will be prepended to all image sources in your email. Applies to both inline and background images.
+    Prepend a base URL to all image sources in your email. Applies to both inline and background images.
 
 - **URL Parameters**
 
@@ -78,7 +78,7 @@ Add any number of attributes to any elements in your HTML. Tag names can also be
 
 Uses [pretty](https://www.npmjs.com/package/pretty) to pretty-print your HTML code.
 
-#### Prettify
+#### Minify
 
 Uses [html-crush](https://www.npmjs.com/package/html-crush) to minify your HTML code.
 
@@ -96,7 +96,7 @@ Preview your HTML live, in a resizable iframe:
 
 Shows your _approximate_ HTML input _and_ output file sizes, updated as-you-type.
 
-When you're getting close to [Gmail's clipping limit](https://github.com/hteumeuleu/email-bugs/issues/41), it'll show a warning icon linked to a GitHub issue that discusses this in detail.
+When you're close to [Gmail's clipping limit](https://github.com/hteumeuleu/email-bugs/issues/41), it'll show a warning icon linked to a GitHub issue that discusses this in detail.
 
 ####
 
@@ -107,7 +107,7 @@ Have ideas for new features? Found a bug and want to squash it?
 Pull requests are welcome!
 
 However, nobody likes working hard just to see their PR rejected.
-So, before starting any *significant* work, please [open an issue](https://github.com/cossssmin/sendtest.email/issues/new) and describe your idea.
+So, before starting any *significant* amount of work, please [open an issue](https://github.com/cossssmin/sendtest.email/issues/new) and describe your idea.
 
 ### Build previews
 
