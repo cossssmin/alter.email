@@ -107,7 +107,7 @@ Have ideas for new features? Found a bug and want to squash it?
 Pull requests are welcome!
 
 However, nobody likes working hard just to see their PR rejected.
-So, before starting any *significant* amount of work, please [open an issue](https://github.com/cossssmin/sendtest.email/issues/new) and describe your idea.
+So, before starting any *significant* amount of work, please [open an issue](https://github.com/cossssmin/alter.email/issues/new) and describe your idea.
 
 ### Build previews
 
