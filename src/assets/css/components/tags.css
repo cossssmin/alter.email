@@ -1,4 +1,3 @@
-/* purgecss start ignore */
 .tags-input {
   @apply w-full mb-8 py-1;
 }
@@ -34,4 +33,3 @@
 .tags-input-text {
   @apply flex-1 outline-none py-1 ml-2 mb-1;
 }
-/* purgecss end ignore */

@@ -1,0 +1,30 @@
+@import "sweetalert2/dist/sweetalert2";
+
+.swal2-title {
+  @apply text-4xl italic mb-6 mt-2 !important;
+}
+
+.modal-logo {
+  @apply fill-current w-10 text-blue-500;
+  transition: all 0.25s ease 0s;
+}
+
+.modal-logo:hover {
+  transform: scale(1.4) rotate(90deg);
+}
+
+.swal2-content {
+  @apply text-base text-gray-600 mb-4 !important;
+}
+
+.swal2-footer {
+  @apply block text-xs text-gray-500 text-center leading-relaxed !important;
+}
+
+.swal2-footer a {
+  @apply underline !important;
+}
+
+.swal2-footer a:hover {
+  @apply no-underline !important;
+}

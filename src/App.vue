@@ -72,7 +72,7 @@
                 <ul>
                   <li class="mb-8 pb-8">
                     <div class="px-2">
-                      <div class="checkbox-toggle mb-2">
+                      <div class="checkbox-toggle">
                         <input type="checkbox" id="inlinerToggle" name="inlinerToggle" v-model="transformers.inliner.enabled" class="switch" />
                         <label for="inlinerToggle" class="font-semibold">Inline CSS</label>
                       </div>
@@ -84,7 +84,7 @@
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="applyAttributesTableElements" name="applyAttributesTableElements" v-model="transformers.inliner.options.applyAttributesTableElements" class="switch" />
                             <label for="applyAttributesTableElements">applyAttributesTableElements</label>
                           </div>
@@ -93,7 +93,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="applyHeightAttributes" name="applyHeightAttributes" v-model="transformers.inliner.options.applyHeightAttributes" class="switch" />
                             <label for="applyHeightAttributes">applyHeightAttributes</label>
                           </div>
@@ -102,7 +102,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="applyStyleTags" name="applyStyleTags" v-model="transformers.inliner.options.applyStyleTags" class="switch" />
                             <label for="applyStyleTags">applyStyleTags</label>
                           </div>
@@ -111,7 +111,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="applyWidthAttributes" name="applyWidthAttributes" v-model="transformers.inliner.options.applyWidthAttributes" class="switch" />
                             <label for="applyWidthAttributes">applyWidthAttributes</label>
                           </div>
@@ -120,7 +120,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="inlinePseudoElements" name="inlinePseudoElements" v-model="transformers.inliner.options.inlinePseudoElements" class="switch" />
                             <label for="inlinePseudoElements">inlinePseudoElements</label>
                           </div>
@@ -130,7 +130,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="preserveFontFaces" name="preserveFontFaces" v-model="transformers.inliner.options.preserveFontFaces" class="switch" />
                             <label for="preserveFontFaces">preserveFontFaces</label>
                           </div>
@@ -139,7 +139,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="preserveImportant" name="preserveImportant" v-model="transformers.inliner.options.preserveImportant" class="switch" />
                             <label for="preserveImportant">preserveImportant</label>
                           </div>
@@ -148,7 +148,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="preserveMediaQueries" name="preserveMediaQueries" v-model="transformers.inliner.options.preserveMediaQueries" class="switch" />
                             <label for="preserveMediaQueries">preserveMediaQueries</label>
                           </div>
@@ -157,7 +157,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="preserveKeyFrames" name="preserveKeyFrames" v-model="transformers.inliner.options.preserveKeyFrames" class="switch" />
                             <label for="preserveKeyFrames">preserveKeyFrames</label>
                           </div>
@@ -166,7 +166,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="preservePseudos" name="preservePseudos" v-model="transformers.inliner.options.preservePseudos" class="switch" />
                             <label for="preservePseudos">preservePseudos</label>
                           </div>
@@ -175,7 +175,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="removeStyleTags" name="removeStyleTags" v-model="transformers.inliner.options.removeStyleTags" class="switch" />
                             <label for="removeStyleTags">removeStyleTags</label>
                           </div>
@@ -194,7 +194,7 @@
                 <ul>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
-                      <div class="checkbox-toggle mb-4">
+                      <div class="checkbox-toggle">
                         <input type="checkbox" id="emailCombToggle" name="emailCombToggle" v-model="transformers.cleaner.tools.removeUnusedCSS.options.enabled" class="switch" />
                         <label for="emailCombToggle" class="font-semibold">Remove unused CSS</label>
                       </div>
@@ -206,7 +206,7 @@
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul class="px-2">
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="uglify" name="uglify" v-model="transformers.cleaner.tools.removeUnusedCSS.options.uglify" class="switch" />
                             <label for="uglify">uglify</label>
                           </div>
@@ -215,7 +215,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="removeHTMLComments" name="removeHTMLComments" v-model="transformers.cleaner.tools.removeUnusedCSS.options.removeHTMLComments" class="switch" />
                             <label for="removeHTMLComments">removeHTMLComments</label>
                           </div>
@@ -318,7 +318,7 @@
                   </li>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
-                      <div class="checkbox-toggle mb-4">
+                      <div class="checkbox-toggle">
                         <input type="checkbox" id="textCleanupToggle" name="textCleanupToggle" v-model="transformers.cleaner.tools.detergent.enabled" class="switch" />
                         <label for="textCleanupToggle" class="font-semibold">Text Cleanup</label>
                       </div>
@@ -330,7 +330,7 @@
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul class="px-2">
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="fixBrokenEntities" name="fixBrokenEntities" v-model="transformers.cleaner.tools.detergent.options.fixBrokenEntities" class="switch" />
                             <label for="fixBrokenEntities">fixBrokenEntities</label>
                           </div>
@@ -339,7 +339,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="removeWidows" name="removeWidows" v-model="transformers.cleaner.tools.detergent.options.removeWidows" class="switch" />
                             <label for="removeWidows">removeWidows</label>
                           </div>
@@ -348,7 +348,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="convertEntities" name="convertEntities" v-model="transformers.cleaner.tools.detergent.options.convertEntities" class="switch" />
                             <label for="convertEntities">convertEntities</label>
                           </div>
@@ -357,7 +357,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="convertDashes" name="convertDashes" v-model="transformers.cleaner.tools.detergent.options.convertDashes" class="switch" />
                             <label for="convertDashes">convertDashes</label>
                           </div>
@@ -366,7 +366,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="convertApostrophes" name="convertApostrophes" v-model="transformers.cleaner.tools.detergent.options.convertApostrophes" class="switch" />
                             <label for="convertApostrophes">convertApostrophes</label>
                           </div>
@@ -375,7 +375,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="replaceLineBreaks" name="replaceLineBreaks" v-model="transformers.cleaner.tools.detergent.options.replaceLineBreaks" class="switch" />
                             <label for="replaceLineBreaks">replaceLineBreaks</label>
                           </div>
@@ -384,7 +384,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="removeLineBreaks" name="removeLineBreaks" v-model="transformers.cleaner.tools.detergent.options.removeLineBreaks" class="switch" />
                             <label for="removeLineBreaks">removeLineBreaks</label>
                           </div>
@@ -393,7 +393,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="useXHTML" name="useXHTML" v-model="transformers.cleaner.tools.detergent.options.useXHTML" class="switch" />
                             <label for="useXHTML">useXHTML</label>
                           </div>
@@ -402,7 +402,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="dontEncodeNonLatin" name="dontEncodeNonLatin" v-model="transformers.cleaner.tools.detergent.options.dontEncodeNonLatin" class="switch" />
                             <label for="dontEncodeNonLatin">dontEncodeNonLatin</label>
                           </div>
@@ -411,7 +411,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="addMissingSpaces" name="addMissingSpaces" v-model="transformers.cleaner.tools.detergent.options.addMissingSpaces" class="switch" />
                             <label for="addMissingSpaces">addMissingSpaces</label>
                           </div>
@@ -420,7 +420,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="convertDotsToEllipsis" name="convertDotsToEllipsis" v-model="transformers.cleaner.tools.detergent.options.convertDotsToEllipsis" class="switch" />
                             <label for="convertDotsToEllipsis">convertDotsToEllipsis</label>
                           </div>
@@ -429,7 +429,7 @@
                           </p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="stripHtml" name="stripHtml" v-model="transformers.cleaner.tools.detergent.options.stripHtml" class="switch" />
                             <label for="stripHtml">stripHtml</label>
                           </div>
@@ -461,7 +461,7 @@
                   </li>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
-                      <div class="checkbox-toggle mb-4">
+                      <div class="checkbox-toggle">
                         <input type="checkbox" id="replaceStrToggle" name="replaceStrToggle" v-model="transformers.cleaner.tools.replaceStrings.enabled" class="switch" />
                         <label for="replaceStrToggle" class="font-semibold">Replace strings</label>
                       </div>
@@ -514,7 +514,7 @@
                   </li>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
-                      <div class="checkbox-toggle mb-4">
+                      <div class="checkbox-toggle">
                         <input type="checkbox" id="sixDigitHEXToggle" name="sixDigitHEXToggle" v-model="transformers.cleaner.tools.sixDigitHEX.enabled" class="switch" />
                         <label for="sixDigitHEXToggle" class="font-semibold">Six-digit HEX colors</label>
                       </div>
@@ -606,7 +606,7 @@
                       <p class="text-gray-600 italic text-sm mb-4">
                         Define a base URL that will be prepended to all image sources in your email. Applies to both inline and background images.
                       </p>
-                      <input id="baseImageURL" type="text" class="form-input py-2 text-sm" v-model="transformers.urls.items.baseImageURL.url">
+                      <input id="baseImageURL" type="text" class="form-input py-2 text-sm" placeholder="https://" v-model="transformers.urls.items.baseImageURL.url">
                     </div>
                   </li>
                   <li class="mb-8 pb-8 border-b border-gray-200">
@@ -671,7 +671,7 @@
                 <ul>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
-                      <div class="checkbox-toggle mb-2">
+                      <div class="checkbox-toggle">
                         <input type="checkbox" id="prettifyToggle" name="prettifyToggle" v-model="transformers.prettify.enabled" class="switch" />
                         <label for="prettifyToggle" class="font-semibold">Prettify Code</label>
                       </div>
@@ -683,9 +683,9 @@
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="prettyOCD" name="prettyOCD" v-model="transformers.prettify.options.ocd" class="switch" />
-                            <label for="prettyOCD">OCD</label>
+                            <label for="prettyOCD">ocd</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
                             <ul class="list-disc pl-6">
@@ -731,7 +731,7 @@
                                 >
                               </li>
                               <li class="mb-6">
-                                <div class="checkbox-toggle mb-2">
+                                <div class="checkbox-toggle">
                                   <input type="checkbox" id="prettyIndentWithTabs" name="prettyIndentWithTabs" v-model="transformers.prettify.options.indent_with_tabs" class="switch" />
                                   <label for="prettyIndentWithTabs">indent_with_tabs</label>
                                 </div>
@@ -747,7 +747,7 @@
                                 <input id="prettyEOL" type="text" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.eol">
                               </li>
                               <li class="mb-6">
-                                <div class="checkbox-toggle mb-2">
+                                <div class="checkbox-toggle">
                                   <input type="checkbox" id="prettyEndWithNewline" name="prettyEndWithNewline" v-model="transformers.prettify.options.end_with_newline" class="switch" />
                                   <label for="prettyEndWithNewline">end_with_newline</label>
                                 </div>
@@ -775,7 +775,7 @@
                                 </div>
                               </li>
                               <li class="mb-6">
-                                <div class="checkbox-toggle mb-2">
+                                <div class="checkbox-toggle">
                                   <input type="checkbox" id="prettyIndentInnerHTML" name="prettyIndentInnerHTML" v-model="transformers.prettify.options.indent_inner_html" class="switch" />
                                   <label for="prettyIndentInnerHTML">indent_inner_html</label>
                                 </div>
@@ -784,7 +784,7 @@
                                 </p>
                               </li>
                               <li class="mb-6">
-                                <div class="checkbox-toggle mb-2">
+                                <div class="checkbox-toggle">
                                   <input type="checkbox" id="prettyIndentEmptyLines" name="prettyIndentEmptyLines" v-model="transformers.prettify.options.indent_empty_lines" class="switch" />
                                   <label for="prettyIndentEmptyLines">indent_empty_lines</label>
                                 </div>
@@ -812,7 +812,7 @@
                                 </div>
                               </li>
                               <li class="mb-6">
-                                <div class="checkbox-toggle mb-2">
+                                <div class="checkbox-toggle">
                                   <input type="checkbox" id="prettyPreserveNewlines" name="prettyPreserveNewlines" v-model="transformers.prettify.options.preserve_newlines" class="switch" />
                                   <label for="prettyPreserveNewlines">preserve_newlines</label>
                                 </div>
@@ -847,11 +847,11 @@
                                 <input id="prettyMaxPreserveLines" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.max_preserve_newlines">
                               </li>
                               <li class="mb-6">
-                                <label for="prettyMaxPreserveLines" class="flex mb-2 cursor-pointer">wrap_line_length</label>
+                                <label for="wrap_line_length" class="flex mb-2 cursor-pointer">wrap_line_length</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Maximum characters per line (0 disables)
                                 </p>
-                                <input id="prettyMaxPreserveLines" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.wrap_line_length">
+                                <input id="wrap_line_length" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.wrap_line_length">
                               </li>
                               <li class="mb-6">
                                 <label for="prettyWrapAttributes" class="flex mb-2 cursor-pointer">wrap_attributes</label>
@@ -868,7 +868,7 @@
                                 <input id="prettyWrapAttributesIndentSize" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.wrap_attributes_indent_size">
                               </li>
                               <li class="mb-6">
-                                <div class="checkbox-toggle mb-2">
+                                <div class="checkbox-toggle">
                                   <input type="checkbox" id="prettyUnescapeStrings" name="prettyUnescapeStrings" v-model="transformers.prettify.options.unescape_strings" class="switch" />
                                   <label for="prettyUnescapeStrings">unescape_strings</label>
                                 </div>
@@ -921,7 +921,7 @@
                 <ul>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
-                      <div class="checkbox-toggle mb-4">
+                      <div class="checkbox-toggle">
                         <input type="checkbox" id="minifyToggle" name="minifyToggle" v-model="transformers.minify.enabled" class="switch" />
                         <label for="minifyToggle" class="font-semibold">Minify Code</label>
                       </div>
@@ -940,14 +940,14 @@
                           <input id="minifyLineLengthLimit" type="number" min="1" class="form-input py-2 text-sm w-auto" v-model="transformers.minify.options.lineLengthLimit">
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="minifyremoveIndentations" name="minifyremoveIndentations" v-model="transformers.minify.options.removeIndentations" class="switch" />
                             <label for="minifyremoveIndentations">removeIndentations</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">Should indentations be removed?</p>
                         </li>
                         <li class="mb-6">
-                          <div class="checkbox-toggle mb-2">
+                          <div class="checkbox-toggle">
                             <input type="checkbox" id="minifyRemoveLineBreaks" name="minifyRemoveLineBreaks" v-model="transformers.minify.options.removeLineBreaks" class="switch" />
                             <label for="minifyRemoveLineBreaks">removeLineBreaks</label>
                           </div>
@@ -1335,18 +1335,5 @@ export default {
 </script>
 
 <style>
-/*! purgecss start ignore */
-@import "tailwindcss/base";
-/*! purgecss end ignore */
-
-@import "tailwindcss/components";
-
-@import "codemirror/lib/codemirror";
-@import "sweetalert2/dist/sweetalert2";
-@import "codemirror-theme-github/theme/github";
-
 @import "/assets/css/app";
-@import "/assets/css/tags";
-
-@import "tailwindcss/utilities";
 </style>

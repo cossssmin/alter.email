@@ -1,0 +1,75 @@
+[v-cloak] {
+  @apply hidden;
+}
+
+.bg-gradient-maizzle {
+  background: url('https://maizzle.com/images/escheresque.png'), linear-gradient(-90deg, #5f54f1, #4398ee);
+}
+
+.logo {
+  @apply text-xl font-semibold italic mr-4 h-12 cursor-pointer;
+}
+
+.logo a {
+  @apply text-white flex;
+}
+
+.logo svg {
+  transition: all 0.3s ease 0s;
+}
+
+.logo:hover svg {
+  transform: scale(1.2) rotate(90deg);
+}
+
+.btn-process {
+  @apply px-6 py-2 text-purple-800 bg-white shadow text-xs font-bold uppercase rounded;
+}
+
+.btn-process.disabled {
+  @apply opacity-25 pointer-events-none select-none;
+}
+
+.btn-process.busy {
+  @apply mt-px -mb-px pointer-events-none shadow-md opacity-75;
+  background: linear-gradient(270deg,#ffed4a,#f2d024);
+}
+
+.btn-process:hover {
+  @apply shadow-md;
+  background: linear-gradient(270deg,#ffed4a,#f2d024);
+}
+
+.btn-process:focus {
+  @apply outline-none;
+}
+
+.btn-process:active {
+  @apply mt-px -mb-px;
+}
+
+.inline-code {
+  @apply text-xs bg-gray-200 px-1 py-px rounded;
+}
+
+.transformer--active {
+  @apply text-blue-500 cursor-default relative;
+}
+
+.transformer--active::before {
+  content: "";
+  @apply w-0 h-0 border-solid absolute z-50;
+  border-width: 0 7px 8px 7px;
+  border-color: transparent transparent #fff transparent;
+  left: calc(50% - 7px);
+  bottom: -1px;
+}
+
+.transformer--active::after {
+  content: "";
+  @apply w-0 h-0 border-solid absolute z-40;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #e2e8f0 transparent;
+  left: calc(50% - 10px);
+  bottom: -1px;
+}

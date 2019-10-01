@@ -1,0 +1,47 @@
+@import "codemirror/lib/codemirror";
+@import "codemirror-theme-github/theme/github";
+
+.gutter {
+  @apply bg-gray-300 flex items-center;
+  cursor: e-resize;
+}
+
+.gutter-horizontal::before {
+  @apply text-gray-600 bg-gray-100 border border-gray-300 border-solid text-center rounded z-50;
+  content: '⋮';
+  margin-left: -3px;
+  padding: 12px 2px;
+  text-orientation: mixed;
+  word-break: break-all;
+}
+
+.gutter-horizontal:hover {
+  @apply bg-gray-400;
+}
+
+.gutter-horizontal:hover::before {
+  @apply text-gray-700 border-gray-400;
+}
+
+.CodeMirror {
+  @apply h-full !important;
+  @apply pt-4 rounded-bl rounded-br rounded-tr;
+}
+
+.CodeMirror-code {
+  @apply leading-relaxed;
+}
+
+.cm-s-github .CodeMirror-linenumber {text-align: center;}
+
+/*
+  Enable the mark-selection plugin first, in order to
+  customize background and color for selected text.
+*/
+.cm-s-github .CodeMirror-selected {background: rgba(50, 151, 253, 1);}
+.cm-s-github span.CodeMirror-selectedtext {color: #fff;}
+
+.iframe-width-helper {
+  @apply absolute mb-10 ml-6 bottom-0 px-3 py-2 rounded text-white text-xs;
+  background-color: rgba(0,0,0,0.5);
+}
