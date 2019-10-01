@@ -1332,6 +1332,9 @@ export default {
     },
   },
   watch: {
+    'html.original': function (newVal) {
+      this.html.transformed = this.html.transformed == '' ? newVal : this.html.transformed
+    },
     'transformers.cleaner.tools.detergent.options.removeLineBreaks': function (newVal) {
       if (newVal) {
         this.transformers.cleaner.tools.detergent.options.replaceLineBreaks = false
