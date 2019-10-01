@@ -1330,7 +1330,19 @@ export default {
     transformedFormattedFileSizeUnix () {
       return this.html.transformed.length > 0 ? '~ ' + ByteSize.format(this.transformedFileSizeUnix) : '0 KB'
     },
-  }
+  },
+  watch: {
+    'transformers.cleaner.tools.detergent.options.removeLineBreaks': function (newVal) {
+      if (newVal) {
+        this.transformers.cleaner.tools.detergent.options.replaceLineBreaks = false
+      }
+    },
+    'transformers.cleaner.tools.detergent.options.replaceLineBreaks': function (newVal) {
+      if (newVal) {
+        this.transformers.cleaner.tools.detergent.options.removeLineBreaks = false
+      }
+    }
+  },
 }
 </script>
 
