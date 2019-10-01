@@ -535,18 +535,18 @@
                       :class="{'mb-8': transformers.extraAttributes.elements.length > 0}"
                     >
                       Add any number of attributes to any elements in your HTML.
-                      Tag names can also be <a href="https://cheerio.js.org/" target="_blank" rel="nofollow noopener noreferrer" class="text-blue-500 hover:text-blue-700">cheerio</a> selectors.
+                      Tag names can also be <a href="https://cheerio.js.org/" target="_blank" rel="nofollow noopener noreferrer" class="text-blue-500 hover:text-blue-700">cheerio</a> selectors (jQuery-like).
                     </p>
                     <div class="-mx-2">
                       <table class="mb-4 w-full">
                         <thead v-show="transformers.extraAttributes.elements.length > 0">
                           <tr>
-                            <th class="font-normal text-gray-700 px-2 pb-4">Tag name</th>
-                            <th class="font-normal text-gray-700 px-4 pb-4">
+                            <th class="font-normal text-gray-700 px-2 pb-2 text-sm">Tag name</th>
+                            <th class="font-normal text-gray-700 px-4 pb-2">
                               <table class="w-full -mx-2">
                                 <tr>
-                                  <td class="w-1/2 px-2">Attribute name</td>
-                                  <td class="w-1/2 px-2">Attribute value</td>
+                                  <td class="w-1/2 px-2 text-sm">Attribute name</td>
+                                  <td class="w-1/2 px-2 text-sm">Attribute value</td>
                                   <td class="px-2 w-10 flex"></td>
                                 </tr>
                               </table>
