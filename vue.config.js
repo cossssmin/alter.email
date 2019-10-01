@@ -1,5 +1,13 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? 'https://alter.email/' : '/',
+  publicPath: () => {
+    if (process.env.NODE_ENV === 'production') {
+      if (process.env.CONTEXT === 'deploy-preview') {
+        return `${process.env.DEPLOY_PRIME_URL}/`
+      }
+      return 'https://alter.email/'
+    }
+    return '/'
+  },
   chainWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
       config
