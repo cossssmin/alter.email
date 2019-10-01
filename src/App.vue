@@ -611,7 +611,7 @@
                   </li>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
-                      <label for="removeUnusedCSS-whitelist" class="flex mb-2 cursor-pointer">URL Parameters</label>
+                      <label class="flex mb-2">URL Parameters</label>
                       <p class="text-gray-600 italic text-sm mb-4">
                         Add any number of query string parameters to your anchor URLs.
                       </p>
@@ -621,9 +621,9 @@
                         <table class="mb-4 w-full">
                           <thead v-show="transformers.urls.items.urlParameters.pairs.length > 0">
                             <tr>
-                              <th class="font-normal text-gray-700 px-2 pb-2">Key:</th>
-                              <th class="font-normal text-gray-700 px-2 pb-2">Value:</th>
-                              <th class="font-normal text-gray-700 px-2 pb-2">Encode?</th>
+                              <th class="font-normal text-gray-700 px-2 pb-2 text-sm">Key</th>
+                              <th class="font-normal text-gray-700 px-2 pb-2 text-sm">Value</th>
+                              <th class="font-normal text-gray-700 px-2 pb-2 text-sm">Encode</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -653,7 +653,7 @@
                           <tfoot>
                             <tr>
                               <th class="px-2">
-                                <button @click="transformers.urls.items.urlParameters.pairs.push({key: '', value: '', encode: false})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
+                                <button @click="transformers.urls.items.urlParameters.pairs.push({key: '', value: '', encode: true})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
                                   Add pair
                                 </button>
                               </th>
