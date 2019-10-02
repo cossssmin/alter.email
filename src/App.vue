@@ -936,6 +936,8 @@
                           <label for="minifyLineLengthLimit" class="flex mb-2 cursor-pointer">lineLengthLimit</label>
                           <p class="text-gray-600 italic text-sm mb-4">
                             When removing line breaks, what is the maximum line length to keep?
+                            While a line of code can be up to <a href="https://tools.ietf.org/html/rfc5322#section-2.1.1" target="_blank" rel="nofollow noopener noreferrer" class="text-blue-500 hover:text-blue-700">998 characters</a> long, some email clients require even less.
+                            A conservative 500 is usually recommended for HTML emails.
                           </p>
                           <input id="minifyLineLengthLimit" type="number" min="1" class="form-input py-2 text-sm w-auto" v-model="transformers.minify.options.lineLengthLimit">
                         </li>
