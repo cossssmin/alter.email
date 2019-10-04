@@ -195,14 +195,14 @@
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="emailCombToggle" name="emailCombToggle" v-model="transformers.cleaner.tools.removeUnusedCSS.options.enabled" class="switch" />
+                        <input type="checkbox" id="emailCombToggle" name="emailCombToggle" v-model="transformers.cleaner.tools.removeUnusedCSS.enabled" class="switch" />
                         <label for="emailCombToggle" class="font-semibold">Remove unused CSS</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses <a href="https://www.npmjs.com/package/email-comb" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener noreferrer">email-comb</a> to remove unused CSS.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.cleaner.tools.removeUnusedCSS.options.enabled">
+                    <div class="px-2 mt-6" v-show="transformers.cleaner.tools.removeUnusedCSS.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul class="px-2">
                         <li class="mb-6">
@@ -828,6 +828,143 @@
                       </ul>
                     </div>
                   </li>
+                  <li class="mb-8 pb-8">
+                    <div class="px-2">
+                      <div class="checkbox-toggle">
+                        <input type="checkbox" id="plaintextToggle" name="plaintextToggle" v-model="transformers.formatting.items.plaintext.enabled" class="switch" />
+                        <label for="plaintextToggle" class="font-semibold">Plaintext</label>
+                      </div>
+                      <p class="text-gray-600 italic text-sm pl-12">
+                        Uses <a href="https://www.npmjs.com/package/string-strip-html" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">string-strip-html</a> to generate a plaintext version of your HTML.
+                      </p>
+                    </div>
+                    <div class="px-2 mt-6" v-show="transformers.formatting.items.plaintext.enabled">
+                      <h3 class="text-base text-black font-semibold mb-6">Options</h3>
+                      <ul>
+                        <li class="mb-6">
+                          <label for="plaintextIgnoreTags" class="flex mb-2 cursor-pointer">ignoreTags</label>
+                          <p class="text-gray-600 italic text-sm mb-4">
+                            Tags that should not be removed. Useful for creating richtext versions.
+                          </p>
+                          <div>
+                            <tags-input class="form-input" v-model="transformers.formatting.items.plaintext.options.ignoreTags">
+                              <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
+                                <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
+                                  <span>{{ tag }}</span>
+                                  <button type="button" class="tags-input-remove" @click="removeTag(tag)">
+                                    <svg class="w-2 h-2 fill-current mt-px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+                                  </button>
+                                </span>
+                                <input id="plaintextIgnoreTags" class="tags-input-text" placeholder="Type and hit Enter..." v-on="inputEvents" v-bind="inputAttrs">
+                              </div>
+                            </tags-input>
+                          </div>
+                        </li>
+                        <li class="mb-6">
+                          <label for="plaintextOnlyStripTags" class="flex mb-2 cursor-pointer">onlyStripTags</label>
+                          <p class="text-gray-600 italic text-sm mb-4">
+                            Remove only these tags, nothing else.
+                          </p>
+                          <div>
+                            <tags-input class="form-input" v-model="transformers.formatting.items.plaintext.options.onlyStripTags">
+                              <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
+                                <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
+                                  <span>{{ tag }}</span>
+                                  <button type="button" class="tags-input-remove" @click="removeTag(tag)">
+                                    <svg class="w-2 h-2 fill-current mt-px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+                                  </button>
+                                </span>
+                                <input id="plaintextOnlyStripTags" class="tags-input-text" placeholder="Type and hit Enter..." v-on="inputEvents" v-bind="inputAttrs">
+                              </div>
+                            </tags-input>
+                          </div>
+                        </li>
+                        <li class="mb-6">
+                          <label for="plaintextStripTogetherWithTheirContents" class="flex mb-2 cursor-pointer">stripTogetherWithTheirContents</label>
+                          <p class="text-gray-600 italic text-sm mb-4">
+                            Completely remove these tags (including their content).
+                          </p>
+                          <div>
+                            <tags-input class="form-input" v-model="transformers.formatting.items.plaintext.options.stripTogetherWithTheirContents">
+                              <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
+                                <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
+                                  <span>{{ tag }}</span>
+                                  <button type="button" class="tags-input-remove" @click="removeTag(tag)">
+                                    <svg class="w-2 h-2 fill-current mt-px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+                                  </button>
+                                </span>
+                                <input id="plaintextStripTogetherWithTheirContents" class="tags-input-text" placeholder="Type and hit Enter..." v-on="inputEvents" v-bind="inputAttrs">
+                              </div>
+                            </tags-input>
+                          </div>
+                        </li>
+                        <li class="mb-6">
+                          <div class="checkbox-toggle">
+                            <input type="checkbox" id="plaintextSkipHtmlDecoding" name="plaintextSkipHtmlDecoding" v-model="transformers.formatting.items.plaintext.options.skipHtmlDecoding" class="switch" />
+                            <label for="plaintextSkipHtmlDecoding">skipHtmlDecoding</label>
+                          </div>
+                          <p class="text-gray-600 italic text-sm pl-12">
+                            Enable this to skip decoding escaped HTML entities. Leave turned off to change <code class="inline-code">&amp;copy;</code> to &copy;
+                          </p>
+                        </li>
+                        <li class="mb-6">
+                          <div class="checkbox-toggle">
+                            <input type="checkbox" id="plaintextTrimOnlySpaces" name="plaintextTrimOnlySpaces" v-model="transformers.formatting.items.plaintext.options.trimOnlySpaces" class="switch" />
+                            <label for="plaintextTrimOnlySpaces">trimOnlySpaces</label>
+                          </div>
+                          <p class="text-gray-600 italic text-sm pl-12">
+                            Enable this to prevent string trimming (preserves non-spaces).
+                          </p>
+                        </li>
+                        <li class="mb-6">
+                          <div class="checkbox-toggle">
+                            <input type="checkbox" id="plaintextDumpLinkHrefsNearby" name="plaintextDumpLinkHrefsNearby" v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.enabled" class="switch" />
+                            <label for="plaintextDumpLinkHrefsNearby">dumpLinkHrefsNearby</label>
+                          </div>
+                          <p class="text-gray-600 italic text-sm pl-12">
+                            Outputs URLs in plaintext.
+                          </p>
+                          <div class="px-12 mt-6" v-show="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.enabled">
+                            <ul>
+                              <li class="mb-6">
+                                <div class="checkbox-toggle">
+                                  <input type="checkbox" id="plaintextPutOnNewLine" name="plaintextPutOnNewLine" v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.putOnNewLine" class="switch" />
+                                  <label for="plaintextPutOnNewLine">putOnNewLine</label>
+                                </div>
+                                <p class="text-gray-600 italic text-sm pl-12">
+                                  Force all inserted URLs on a new line, separated by a blank line.
+                                </p>
+                              </li>
+                              <li class="mb-6">
+                                <label for="plaintextWrapHeads" class="flex mb-2 cursor-pointer">wrapHeads</label>
+                                <p class="text-gray-600 italic text-sm mb-4">
+                                  String to insert before every URL.
+                                </p>
+                                <input
+                                  id="plaintextWrapHeads"
+                                  type="text"
+                                  class="form-input py-2 text-sm w-auto"
+                                  v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.wrapHeads"
+                                >
+                              </li>
+                              <li class="mb-6">
+                                <label for="plaintextWrapTails" class="flex mb-2 cursor-pointer">wrapTails</label>
+                                <p class="text-gray-600 italic text-sm mb-4">
+                                  String to insert after every URL.
+                                </p>
+                                <input
+                                  id="plaintextWrapTails"
+                                  type="text"
+                                  class="form-input py-2 text-sm w-auto"
+                                  v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.wrapTails"
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
                 </ul>
               </div>
 
@@ -923,7 +1060,6 @@ export default {
         },
         cleaner: {
           name: 'Code Cleanup',
-          enabled: false,
           tools: {
             removeUnusedCSS: {
               name: 'Remove unused CSS',
@@ -1016,6 +1152,23 @@ export default {
                   '<!--[if',
                   '<!--<![endif'
                 ],
+              },
+            },
+            plaintext: {
+              name: 'Plaintext',
+              enabled: false,
+              options: {
+                ignoreTags: [],
+                onlyStripTags: [],
+                stripTogetherWithTheirContents: ['script', 'style', 'xml'],
+                skipHtmlDecoding: false,
+                trimOnlySpaces: false,
+                dumpLinkHrefsNearby: {
+                  enabled: false,
+                  putOnNewLine: false,
+                  wrapHeads: '',
+                  wrapTails: '',
+                },
               },
             },
           },
@@ -1182,6 +1335,15 @@ export default {
     'transformers.formatting.items.minify.enabled': function (newVal) {
       if (newVal) {
         this.transformers.formatting.items.prettify.enabled = false
+      }
+    },
+    'transformers.formatting.items.plaintext.enabled': function (newVal) {
+      if (newVal) {
+        this.transformers.inliner.enabled = false
+        this.transformers.cleaner.tools.removeUnusedCSS.enabled = false
+        this.transformers.cleaner.tools.sixDigitHEX.enabled = false
+        this.transformers.formatting.items.prettify.enabled = false
+        this.transformers.formatting.items.minify.enabled = false
       }
     },
   },

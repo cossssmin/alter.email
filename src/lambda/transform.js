@@ -6,6 +6,7 @@ import { comb } from 'email-comb'
 import isUrl from 'is-url-superb'
 import { crush } from 'html-crush'
 import sixHex from 'color-shorthand-hex-to-six-digit'
+import stripHTML from 'string-strip-html'
 
 const alterEncodeURIComponent = (str) => {
   return encodeURIComponent(str)
@@ -46,7 +47,7 @@ exports.handler = async function (event, context, callback) {
     // Email Comb
     const removeUnusedCSS = config.cleaner.tools.removeUnusedCSS
 
-    if (removeUnusedCSS && removeUnusedCSS.options && removeUnusedCSS.options.enabled) {
+    if (removeUnusedCSS && removeUnusedCSS.enabled) {
       html = comb(html, removeUnusedCSS.options).result
       transforms++
     }
@@ -133,6 +134,11 @@ exports.handler = async function (event, context, callback) {
     if (config.formatting.items.minify.enabled) {
       html = crush(html, config.formatting.items.minify.options).result
       transforms++
+    }
+
+    // Plaintext
+    if (config.formatting.items.plaintext.enabled) {
+      html = stripHTML(html, config.formatting.items.plaintext.options)
     }
 
     // Replace Strings

@@ -10,6 +10,7 @@
     "is-url-superb": "^3.0.0",
     "juice": "^5.2.0",
     "pretty": "^2.0.0",
-    "query-string": "^6.8.3"
+    "query-string": "^6.8.3",
+    "string-strip-html": "^4.3.1"
   }
 }
