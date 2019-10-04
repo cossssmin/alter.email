@@ -7,6 +7,12 @@ import isUrl from 'is-url-superb'
 import { crush } from 'html-crush'
 import sixHex from 'color-shorthand-hex-to-six-digit'
 
+const alterEncodeURIComponent = (str) => {
+  return encodeURIComponent(str)
+    .replace(/[!'()*]/g, (c) => '%' + c.charCodeAt(0).toString(16))
+    .replace(/%20/g, '+')
+}
+
 exports.handler = async function (event, context, callback) {
   try {
     if (event.httpMethod !== "POST") {
@@ -101,7 +107,7 @@ exports.handler = async function (event, context, callback) {
         let params = parsed.query
 
         config.urls.items.urlParameters.pairs.forEach(pair => {
-          params[pair.key] = pair.encode ? encodeURIComponent(pair.value) : pair.value
+          params[pair.key] = pair.encode ? alterEncodeURIComponent(pair.value) : pair.value
           pair.value.length > 0 ? paramsApplied++ : paramsApplied--
         })
 
