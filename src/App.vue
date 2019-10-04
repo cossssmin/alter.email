@@ -11,18 +11,18 @@
         <button
           @click="handleSubmit()"
           class="btn-process"
-          :class="{['disabled']: html.original.length < 1, 'busy': altering}"
+          :class="{['disabled']: o.html.original.length < 1, 'busy': o.altering}"
         >
-          {{ altering ? 'Altering Email...' : 'Alter Email &rarr;' }}
+          {{ o.altering ? 'Altering Email...' : 'Alter Email &rarr;' }}
         </button>
       </div>
       <div class="w-full h-full">
         <div class="flex">
-          <ul class="flex h-10 font-semibold w-1/2 text-white" :style="panelWidths.input > 0 ? `width:${panelWidths.input}px;` : ''">
-            <li @click="activeInputTab = 'html'" :class="[activeInputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Input</li>
-            <li @click="activeInputTab = 'transformers'" :class="[activeInputTab == 'transformers' ? 'bg-gray-100 text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Transformers</li>
+          <ul class="flex h-10 font-semibold w-1/2 text-white" :style="o.panelWidths.input > 0 ? `width:${o.panelWidths.input}px;` : ''">
+            <li @click="o.activeInputTab = 'html'" :class="[o.activeInputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Input</li>
+            <li @click="o.activeInputTab = 'transformers'" :class="[o.activeInputTab == 'transformers' ? 'bg-gray-100 text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Transformers</li>
             <li class="flex items-center">
-              <span v-show="html.original" v-cloak class="flex items-center flex-none px-6 text-sm text-white">
+              <span v-show="o.html.original" v-cloak class="flex items-center flex-none px-6 text-sm text-white">
                 {{ originalFormattedFileSizeUnix }}
                 <a href="https://github.com/hteumeuleu/email-bugs/issues/41" class="ml-4" target="_blank" rel="nofollow noopener">
                   <svg class="w-4 align-bottom" v-show="originalFileSizeUnix > 82000 && originalFileSizeUnix < 104453" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M501.461 383.799L320.501 51.401C306.7 28.6 282.7 14.8 256 14.8s-50.7 13.8-64.501 36.601L10.539 383.799C-3.259 407.501-3.56 435.701 9.941 459.4c13.499 23.699 37.798 37.8 65.099 37.8h361.92c27.301 0 51.601-14.101 65.099-37.8 13.501-23.699 13.2-51.899-.598-75.601z" fill="#495a79"/><path d="M502.059 459.4c-13.499 23.699-37.798 37.8-65.099 37.8H256V14.8c26.7 0 50.7 13.801 64.501 36.601L501.461 383.8c13.798 23.701 14.099 51.901.598 75.6z" fill="#42516d"/><path d="M475.661 399.1L294.699 66.699C286.601 52.9 271.901 44.8 256 44.8s-30.601 8.101-38.699 21.899L36.339 399.1c-8.399 14.101-8.399 31.199-.298 45.3 8.099 14.399 22.798 22.8 39 22.8h361.92c16.201 0 30.901-8.401 39-22.8 8.099-14.101 8.099-31.199-.3-45.3z" fill="#ffde33"/><path d="M475.96 444.4c-8.099 14.399-22.798 22.8-39 22.8H256V44.8c15.901 0 30.601 8.101 38.699 21.899L475.661 399.1c8.399 14.101 8.399 31.199.299 45.3z" fill="#ffbc33"/><g fill="#495a79"><path d="M256 437.2c-16.538 0-30-13.462-30-30s13.462-30 30-30 30 13.462 30 30-13.462 30-30 30zM286 317.2c0 16.538-13.462 30-30 30s-30-13.462-30-30v-150c0-16.538 13.462-30 30-30s30 13.462 30 30v150z"/></g><g fill="#42516d"><path d="M286 407.2c0-16.538-13.462-30-30-30v60c16.538 0 30-13.462 30-30zM286 317.2v-150c0-16.538-13.462-30-30-30v210c16.538 0 30-13.462 30-30z"/></g></svg>
@@ -31,11 +31,11 @@
               </span>
             </li>
           </ul>
-          <ul class="flex h-10 font-semibold w-1/2 text-white ml-1 items-center" :style="panelWidths.output > 0 ? `width:${panelWidths.output}px;` : ''">
-            <li @click="activeOutputTab = 'html'" :class="[activeOutputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Output</li>
-            <li @click="activeOutputTab = 'preview'" :class="[activeOutputTab == 'preview' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Preview</li>
+          <ul class="flex h-10 font-semibold w-1/2 text-white ml-1 items-center" :style="o.panelWidths.output > 0 ? `width:${o.panelWidths.output}px;` : ''">
+            <li @click="o.activeOutputTab = 'html'" :class="[o.activeOutputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Output</li>
+            <li @click="o.activeOutputTab = 'preview'" :class="[o.activeOutputTab == 'preview' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Preview</li>
             <li class="flex items-center">
-              <span v-show="html.transformed" v-cloak class="flex items-center flex-none px-6 text-sm text-white">
+              <span v-show="o.html.transformed" v-cloak class="flex items-center flex-none px-6 text-sm text-white">
                 {{ transformedFormattedFileSizeUnix }}
                 <a href="https://github.com/hteumeuleu/email-bugs/issues/41" class="ml-4" target="_blank" rel="nofollow noopener">
                   <svg class="w-4 align-bottom" v-show="transformedFileSizeUnix > 82000 && transformedFileSizeUnix < 104453" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M501.461 383.799L320.501 51.401C306.7 28.6 282.7 14.8 256 14.8s-50.7 13.8-64.501 36.601L10.539 383.799C-3.259 407.501-3.56 435.701 9.941 459.4c13.499 23.699 37.798 37.8 65.099 37.8h361.92c27.301 0 51.601-14.101 65.099-37.8 13.501-23.699 13.2-51.899-.598-75.601z" fill="#495a79"/><path d="M502.059 459.4c-13.499 23.699-37.798 37.8-65.099 37.8H256V14.8c26.7 0 50.7 13.801 64.501 36.601L501.461 383.8c13.798 23.701 14.099 51.901.598 75.6z" fill="#42516d"/><path d="M475.661 399.1L294.699 66.699C286.601 52.9 271.901 44.8 256 44.8s-30.601 8.101-38.699 21.899L36.339 399.1c-8.399 14.101-8.399 31.199-.298 45.3 8.099 14.399 22.798 22.8 39 22.8h361.92c16.201 0 30.901-8.401 39-22.8 8.099-14.101 8.099-31.199-.3-45.3z" fill="#ffde33"/><path d="M475.96 444.4c-8.099 14.399-22.798 22.8-39 22.8H256V44.8c15.901 0 30.601 8.101 38.699 21.899L475.661 399.1c8.399 14.101 8.399 31.199.299 45.3z" fill="#ffbc33"/><g fill="#495a79"><path d="M256 437.2c-16.538 0-30-13.462-30-30s13.462-30 30-30 30 13.462 30 30-13.462 30-30 30zM286 317.2c0 16.538-13.462 30-30 30s-30-13.462-30-30v-150c0-16.538 13.462-30 30-30s30 13.462 30 30v150z"/></g><g fill="#42516d"><path d="M286 407.2c0-16.538-13.462-30-30-30v60c16.538 0 30-13.462 30-30zM286 317.2v-150c0-16.538-13.462-30-30-30v210c16.538 0 30-13.462 30-30z"/></g></svg>
@@ -48,44 +48,44 @@
         <div class="flex h-full w-full">
           <div id="editor" class="h-full bg-white shadow-2xl rounded-tl rounded-bl">
             <codemirror
-              v-show="activeInputTab == 'html'"
-              v-model="html.original"
-              ref="codemirror"
-              :options="codemirrorOptions"
+              v-show="o.activeInputTab == 'html'"
+              v-model="o.html.original"
+              ref="codemirrorInput"
+              :options="o.codemirrorOptions"
               class="h-full"
             />
-            <div class="h-full bg-white overflow-y-auto relative rounded-tl rounded-bl" v-show="activeInputTab == 'transformers'">
+            <div class="h-full bg-white overflow-y-auto relative rounded-tl rounded-bl" v-show="o.activeInputTab == 'transformers'">
               <ul class="flex justify-between w-full border-b border-gray-300 bg-gray-100 text-gray-900 px-8 sticky top-0 z-50 relative">
                 <li
-                  v-for="(transformer, key, index) in transformers"
+                  v-for="(transformer, key, index) in o.transformers"
                   :key="index"
                   class="text-sm font-semibold py-4"
-                  :class="[activeTransformerTab == key ? 'transformer--active' : 'cursor-pointer hover:opacity-75']"
-                  @click="switchTransformerTab(key)"
+                  :class="[o.activeTransformerTab == key ? 'transformer--active' : 'cursor-pointer hover:opacity-75']"
+                  @click="o.activeTransformerTab = key"
                 >
                   {{ transformer.name }}
                 </li>
               </ul>
 
               <!-- CSS Inliner -->
-              <div class="p-8" v-show="activeTransformerTab == 'inliner'">
+              <div class="p-8" v-show="o.activeTransformerTab == 'inliner'">
                 <ul>
                   <li class="mb-8 pb-8">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="inlinerToggle" name="inlinerToggle" v-model="transformers.inliner.enabled" class="switch" />
+                        <input type="checkbox" id="inlinerToggle" name="inlinerToggle" v-model="o.transformers.inliner.enabled" class="switch" />
                         <label for="inlinerToggle" class="font-semibold">Inline CSS</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses the <a href="https://github.com/Automattic/juice" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow">Juice</a> library to inline your embedded CSS.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.inliner.enabled">
+                    <div class="px-2 mt-6" v-show="o.transformers.inliner.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="applyAttributesTableElements" name="applyAttributesTableElements" v-model="transformers.inliner.options.applyAttributesTableElements" class="switch" />
+                            <input type="checkbox" id="applyAttributesTableElements" name="applyAttributesTableElements" v-model="o.transformers.inliner.options.applyAttributesTableElements" class="switch" />
                             <label for="applyAttributesTableElements">applyAttributesTableElements</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -94,7 +94,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="applyHeightAttributes" name="applyHeightAttributes" v-model="transformers.inliner.options.applyHeightAttributes" class="switch" />
+                            <input type="checkbox" id="applyHeightAttributes" name="applyHeightAttributes" v-model="o.transformers.inliner.options.applyHeightAttributes" class="switch" />
                             <label for="applyHeightAttributes">applyHeightAttributes</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -103,7 +103,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="applyStyleTags" name="applyStyleTags" v-model="transformers.inliner.options.applyStyleTags" class="switch" />
+                            <input type="checkbox" id="applyStyleTags" name="applyStyleTags" v-model="o.transformers.inliner.options.applyStyleTags" class="switch" />
                             <label for="applyStyleTags">applyStyleTags</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -112,7 +112,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="applyWidthAttributes" name="applyWidthAttributes" v-model="transformers.inliner.options.applyWidthAttributes" class="switch" />
+                            <input type="checkbox" id="applyWidthAttributes" name="applyWidthAttributes" v-model="o.transformers.inliner.options.applyWidthAttributes" class="switch" />
                             <label for="applyWidthAttributes">applyWidthAttributes</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -121,7 +121,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="inlinePseudoElements" name="inlinePseudoElements" v-model="transformers.inliner.options.inlinePseudoElements" class="switch" />
+                            <input type="checkbox" id="inlinePseudoElements" name="inlinePseudoElements" v-model="o.transformers.inliner.options.inlinePseudoElements" class="switch" />
                             <label for="inlinePseudoElements">inlinePseudoElements</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -131,7 +131,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="preserveFontFaces" name="preserveFontFaces" v-model="transformers.inliner.options.preserveFontFaces" class="switch" />
+                            <input type="checkbox" id="preserveFontFaces" name="preserveFontFaces" v-model="o.transformers.inliner.options.preserveFontFaces" class="switch" />
                             <label for="preserveFontFaces">preserveFontFaces</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -140,7 +140,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="preserveImportant" name="preserveImportant" v-model="transformers.inliner.options.preserveImportant" class="switch" />
+                            <input type="checkbox" id="preserveImportant" name="preserveImportant" v-model="o.transformers.inliner.options.preserveImportant" class="switch" />
                             <label for="preserveImportant">preserveImportant</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -149,7 +149,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="preserveMediaQueries" name="preserveMediaQueries" v-model="transformers.inliner.options.preserveMediaQueries" class="switch" />
+                            <input type="checkbox" id="preserveMediaQueries" name="preserveMediaQueries" v-model="o.transformers.inliner.options.preserveMediaQueries" class="switch" />
                             <label for="preserveMediaQueries">preserveMediaQueries</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -158,7 +158,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="preserveKeyFrames" name="preserveKeyFrames" v-model="transformers.inliner.options.preserveKeyFrames" class="switch" />
+                            <input type="checkbox" id="preserveKeyFrames" name="preserveKeyFrames" v-model="o.transformers.inliner.options.preserveKeyFrames" class="switch" />
                             <label for="preserveKeyFrames">preserveKeyFrames</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -167,7 +167,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="preservePseudos" name="preservePseudos" v-model="transformers.inliner.options.preservePseudos" class="switch" />
+                            <input type="checkbox" id="preservePseudos" name="preservePseudos" v-model="o.transformers.inliner.options.preservePseudos" class="switch" />
                             <label for="preservePseudos">preservePseudos</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -176,7 +176,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="removeStyleTags" name="removeStyleTags" v-model="transformers.inliner.options.removeStyleTags" class="switch" />
+                            <input type="checkbox" id="removeStyleTags" name="removeStyleTags" v-model="o.transformers.inliner.options.removeStyleTags" class="switch" />
                             <label for="removeStyleTags">removeStyleTags</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -190,24 +190,24 @@
               </div>
 
               <!-- Code Cleanup -->
-              <div class="p-8" v-show="activeTransformerTab == 'cleaner'">
+              <div class="p-8" v-show="o.activeTransformerTab == 'cleaner'">
                 <ul>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="emailCombToggle" name="emailCombToggle" v-model="transformers.cleaner.tools.removeUnusedCSS.enabled" class="switch" />
+                        <input type="checkbox" id="emailCombToggle" name="emailCombToggle" v-model="o.transformers.cleaner.tools.removeUnusedCSS.enabled" class="switch" />
                         <label for="emailCombToggle" class="font-semibold">Remove unused CSS</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses <a href="https://www.npmjs.com/package/email-comb" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener noreferrer">email-comb</a> to remove unused CSS.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.cleaner.tools.removeUnusedCSS.enabled">
+                    <div class="px-2 mt-6" v-show="o.transformers.cleaner.tools.removeUnusedCSS.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul class="px-2">
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="uglify" name="uglify" v-model="transformers.cleaner.tools.removeUnusedCSS.options.uglify" class="switch" />
+                            <input type="checkbox" id="uglify" name="uglify" v-model="o.transformers.cleaner.tools.removeUnusedCSS.options.uglify" class="switch" />
                             <label for="uglify">uglify</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -216,7 +216,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="removeHTMLComments" name="removeHTMLComments" v-model="transformers.cleaner.tools.removeUnusedCSS.options.removeHTMLComments" class="switch" />
+                            <input type="checkbox" id="removeHTMLComments" name="removeHTMLComments" v-model="o.transformers.cleaner.tools.removeUnusedCSS.options.removeHTMLComments" class="switch" />
                             <label for="removeHTMLComments">removeHTMLComments</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -229,7 +229,7 @@
                             List all <code class="inline-code">class</code> or <code class="inline-code">id</code> values that you want <code class="inline-code">email-comb</code> to ignore. You can use all <a href="https://www.npmjs.com/package/matcher" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700">matcher</a> patterns.
                           </p>
                           <div>
-                            <tags-input class="form-input" v-model="transformers.cleaner.tools.removeUnusedCSS.options.whitelist">
+                            <tags-input class="form-input" v-model="o.transformers.cleaner.tools.removeUnusedCSS.options.whitelist">
                               <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                 <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                   <span>{{ tag }}</span>
@@ -252,7 +252,7 @@
                           </p>
                           <div class="-mx-2">
                             <table class="mb-4 w-full">
-                              <thead v-show="transformers.cleaner.tools.removeUnusedCSS.options.backend.length > 0">
+                              <thead v-show="o.transformers.cleaner.tools.removeUnusedCSS.options.backend.length > 0">
                                 <tr>
                                   <th class="font-normal text-gray-700 px-2 pb-2"><code class="inline-code">heads</code></th>
                                   <th class="font-normal text-gray-700 px-2 pb-2"><code class="inline-code">tails</code></th>
@@ -260,7 +260,7 @@
                               </thead>
                               <tbody>
                                 <tr
-                                  v-for="(pair, index) in transformers.cleaner.tools.removeUnusedCSS.options.backend"
+                                  v-for="(pair, index) in o.transformers.cleaner.tools.removeUnusedCSS.options.backend"
                                   :key="`replaceStrings-${index}`"
                                 >
                                   <td class="px-2 pb-4">
@@ -271,7 +271,7 @@
                                   </td>
                                   <td class="pb-4">
                                     <button
-                                      @click="transformers.cleaner.tools.removeUnusedCSS.options.backend.splice(index, 1)"
+                                      @click="o.transformers.cleaner.tools.removeUnusedCSS.options.backend.splice(index, 1)"
                                       class="font-bold p-4 text-gray-600 hover:text-gray-700" title="Remove"
                                     >
                                       <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
@@ -283,7 +283,7 @@
                                 <tr>
                                   <th class="px-2">
                                     <button
-                                      @click="transformers.cleaner.tools.removeUnusedCSS.options.backend.push({heads: '', tails: ''})"
+                                      @click="o.transformers.cleaner.tools.removeUnusedCSS.options.backend.push({heads: '', tails: ''})"
                                       class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white"
                                     >
                                       Add pair
@@ -300,7 +300,7 @@
                             Email code often contains Outlook or IE conditional comments which you probably don't want to remove. Whatever strings you list here, if comment's opening tag will contain these, that tag will not be removed.
                           </p>
                           <div>
-                            <tags-input class="form-input" v-model="transformers.cleaner.tools.removeUnusedCSS.options.doNotRemoveHTMLCommentsWhoseOpeningTagContains">
+                            <tags-input class="form-input" v-model="o.transformers.cleaner.tools.removeUnusedCSS.options.doNotRemoveHTMLCommentsWhoseOpeningTagContains">
                               <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                 <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                   <span>{{ tag }}</span>
@@ -319,17 +319,17 @@
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="replaceStrToggle" name="replaceStrToggle" v-model="transformers.cleaner.tools.replaceStrings.enabled" class="switch" />
+                        <input type="checkbox" id="replaceStrToggle" name="replaceStrToggle" v-model="o.transformers.cleaner.tools.replaceStrings.enabled" class="switch" />
                         <label for="replaceStrToggle" class="font-semibold">Replace strings</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Batch replace strings in your HTML email. Regex supported.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.cleaner.tools.replaceStrings.enabled">
+                    <div class="px-2 mt-6" v-show="o.transformers.cleaner.tools.replaceStrings.enabled">
                       <div class="-mx-2">
                         <table class="mb-4 w-full">
-                          <thead v-show="transformers.cleaner.tools.replaceStrings.pairs.length > 0">
+                          <thead v-show="o.transformers.cleaner.tools.replaceStrings.pairs.length > 0">
                             <tr>
                               <th class="font-normal text-gray-700 px-2 pb-2">Replace:</th>
                               <th class="font-normal text-gray-700 px-2 pb-2">With:</th>
@@ -337,7 +337,7 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(pair, index) in transformers.cleaner.tools.replaceStrings.pairs"
+                              v-for="(pair, index) in o.transformers.cleaner.tools.replaceStrings.pairs"
                               :key="`replaceStrings-${index}`"
                             >
                               <td class="px-2 pb-4">
@@ -359,7 +359,7 @@
                           <tfoot>
                             <tr>
                               <th class="px-2">
-                                <button @click="transformers.cleaner.tools.replaceStrings.pairs.push({from: '', to: ''})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
+                                <button @click="o.transformers.cleaner.tools.replaceStrings.pairs.push({from: '', to: ''})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
                                   Add replacement
                                 </button>
                               </th>
@@ -372,7 +372,7 @@
                   <li class="mb-8 pb-8">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="sixDigitHEXToggle" name="sixDigitHEXToggle" v-model="transformers.cleaner.tools.sixDigitHEX.enabled" class="switch" />
+                        <input type="checkbox" id="sixDigitHEXToggle" name="sixDigitHEXToggle" v-model="o.transformers.cleaner.tools.sixDigitHEX.enabled" class="switch" />
                         <label for="sixDigitHEXToggle" class="font-semibold">Six-digit HEX colors</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
@@ -384,19 +384,19 @@
               </div>
 
               <!-- Extra Attributes -->
-              <div class="p-8" v-show="activeTransformerTab == 'extraAttributes'">
+              <div class="p-8" v-show="o.activeTransformerTab == 'extraAttributes'">
                 <ul>
                   <li class="mb-8 pb-8">
                     <p
                       class="italic text-gray-600"
-                      :class="{'mb-8': transformers.extraAttributes.elements.length > 0}"
+                      :class="{'mb-8': o.transformers.extraAttributes.elements.length > 0}"
                     >
                       Add any number of attributes to any elements in your HTML.
                       Tag names can also be <a href="https://cheerio.js.org/" target="_blank" rel="nofollow noopener noreferrer" class="text-blue-500 hover:text-blue-700">cheerio</a> selectors (jQuery-like).
                     </p>
                     <div class="-mx-2">
                       <table class="mb-4 w-full">
-                        <thead v-show="transformers.extraAttributes.elements.length > 0">
+                        <thead v-show="o.transformers.extraAttributes.elements.length > 0">
                           <tr>
                             <th class="font-normal text-gray-700 px-2 pb-2 text-sm">Tag name</th>
                             <th class="font-normal text-gray-700 px-4 pb-2">
@@ -411,7 +411,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="(el, index) in transformers.extraAttributes.elements" :key="`extraAttributes-${index}`">
+                          <tr v-for="(el, index) in o.transformers.extraAttributes.elements" :key="`extraAttributes-${index}`">
                             <td class="w-1/3 px-2 align-top">
                               <input type="text" class="form-input py-2 text-sm" v-model="el.name">
                             </td>
@@ -426,7 +426,7 @@
                                   </td>
                                   <td class="px-2 pb-4 w-10">
                                     <button
-                                      @click="el.attributes.length > 1 ? el.attributes.splice(i, 1) : transformers.extraAttributes.elements.splice(index, 1)">
+                                      @click="el.attributes.length > 1 ? el.attributes.splice(i, 1) : o.transformers.extraAttributes.elements.splice(index, 1)">
                                       <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
                                     </button>
                                   </td>
@@ -442,7 +442,7 @@
                         <tfoot>
                           <tr>
                             <th class="px-2 pt-8">
-                              <button @click="transformers.extraAttributes.elements.push({name: '', attributes: [{name: '', value: ''}]})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
+                              <button @click="o.transformers.extraAttributes.elements.push({name: '', attributes: [{name: '', value: ''}]})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
                                 Add element
                               </button>
                             </th>
@@ -455,7 +455,7 @@
               </div>
 
                <!-- URLs -->
-              <div class="p-8" v-show="activeTransformerTab == 'urls'">
+              <div class="p-8" v-show="o.activeTransformerTab == 'urls'">
                 <ul>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
@@ -463,7 +463,7 @@
                       <p class="text-gray-600 italic text-sm mb-4">
                         Define a base URL that will be prepended to all image sources in your email. Applies to both inline and background images.
                       </p>
-                      <input id="baseImageURL" type="text" class="form-input py-2 text-sm" placeholder="https://" v-model="transformers.urls.items.baseImageURL.url">
+                      <input id="baseImageURL" type="text" class="form-input py-2 text-sm" placeholder="https://" v-model="o.transformers.urls.items.baseImageURL.url">
                     </div>
                   </li>
                   <li class="mb-8 pb-8">
@@ -476,7 +476,7 @@
                     <div class="px-2 mt-6">
                       <div class="-mx-2">
                         <table class="mb-4 w-full">
-                          <thead v-show="transformers.urls.items.urlParameters.pairs.length > 0">
+                          <thead v-show="o.transformers.urls.items.urlParameters.pairs.length > 0">
                             <tr>
                               <th class="font-normal text-gray-700 px-2 pb-2 text-sm">Key</th>
                               <th class="font-normal text-gray-700 px-2 pb-2 text-sm">Value</th>
@@ -485,7 +485,7 @@
                           </thead>
                           <tbody>
                             <tr
-                              v-for="(pair, index) in transformers.urls.items.urlParameters.pairs"
+                              v-for="(pair, index) in o.transformers.urls.items.urlParameters.pairs"
                               :key="`replaceStrings-${index}`"
                             >
                               <td class="px-2 pb-4">
@@ -499,7 +499,7 @@
                               </td>
                               <td class="pb-4 text-right">
                                 <button
-                                  @click="transformers.urls.items.urlParameters.pairs.splice(index, 1)"
+                                  @click="o.transformers.urls.items.urlParameters.pairs.splice(index, 1)"
                                   class="font-bold p-4 text-gray-600 hover:text-gray-700" title="Remove"
                                 >
                                   <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
@@ -510,7 +510,7 @@
                           <tfoot>
                             <tr>
                               <th class="px-2">
-                                <button @click="transformers.urls.items.urlParameters.pairs.push({key: '', value: '', encode: true})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
+                                <button @click="o.transformers.urls.items.urlParameters.pairs.push({key: '', value: '', encode: true})" class="cursor-pointer text-sm font-semibold border px-4 py-1 rounded text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white">
                                   Add pair
                                 </button>
                               </th>
@@ -524,24 +524,24 @@
               </div>
 
               <!-- Formatting -->
-              <div class="p-8" v-show="activeTransformerTab == 'formatting'">
+              <div class="p-8" v-show="o.activeTransformerTab == 'formatting'">
                 <ul>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="prettifyToggle" name="prettifyToggle" v-model="transformers.formatting.items.prettify.enabled" class="switch" />
+                        <input type="checkbox" id="prettifyToggle" name="prettifyToggle" v-model="o.transformers.formatting.items.prettify.enabled" class="switch" />
                         <label for="prettifyToggle" class="font-semibold">Prettify Code</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses <a href="https://www.npmjs.com/package/pretty" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">pretty</a> to pretty-print your HTML code.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.formatting.items.prettify.enabled">
+                    <div class="px-2 mt-6" v-show="o.transformers.formatting.items.prettify.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="prettyOCD" name="prettyOCD" v-model="transformers.formatting.items.prettify.options.ocd" class="switch" />
+                            <input type="checkbox" id="prettyOCD" name="prettyOCD" v-model="o.transformers.formatting.items.prettify.options.ocd" class="switch" />
                             <label for="prettyOCD">ocd</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -560,7 +560,7 @@
                               Configure <a href="https://www.npmjs.com/package/js-beautify" target="_blank" rel="nofollow noreferrer noopener" class="text-blue-500 hover:text-blue-700">js-beautify</a> options.
                             </p>
                             <ul>
-                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: transformers.formatting.items.prettify.options.indent_with_tabs}">
+                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: o.transformers.formatting.items.prettify.options.indent_with_tabs}">
                                 <label for="prettyIndentSize" class="flex mb-2 cursor-pointer">indent_size</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   How many characters should be used for indentation size.
@@ -570,11 +570,11 @@
                                   type="number"
                                   min="0"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.formatting.items.prettify.options.indent_size"
-                                  :disabled="transformers.formatting.items.prettify.options.indent_with_tabs"
+                                  v-model="o.transformers.formatting.items.prettify.options.indent_size"
+                                  :disabled="o.transformers.formatting.items.prettify.options.indent_with_tabs"
                                 >
                               </li>
-                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: transformers.formatting.items.prettify.options.indent_with_tabs}">
+                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: o.transformers.formatting.items.prettify.options.indent_with_tabs}">
                                 <label for="prettyIndentChar" class="flex mb-2 cursor-pointer">indent_char</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   What character should be used for indentation. Default is one space character.
@@ -583,13 +583,13 @@
                                   id="prettyIndentChar"
                                   type="text"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.formatting.items.prettify.options.indent_char"
-                                  :disabled="transformers.formatting.items.prettify.options.indent_with_tabs"
+                                  v-model="o.transformers.formatting.items.prettify.options.indent_char"
+                                  :disabled="o.transformers.formatting.items.prettify.options.indent_with_tabs"
                                 >
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyIndentWithTabs" name="prettyIndentWithTabs" v-model="transformers.formatting.items.prettify.options.indent_with_tabs" class="switch" />
+                                  <input type="checkbox" id="prettyIndentWithTabs" name="prettyIndentWithTabs" v-model="o.transformers.formatting.items.prettify.options.indent_with_tabs" class="switch" />
                                   <label for="prettyIndentWithTabs">indent_with_tabs</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -601,11 +601,11 @@
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Character(s) to use as line terminators. (default: <code class="inline-code">\\n</code>)
                                 </p>
-                                <input id="prettyEOL" type="text" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.eol">
+                                <input id="prettyEOL" type="text" class="form-input py-2 text-sm w-auto" v-model="o.transformers.formatting.items.prettify.options.eol">
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyEndWithNewline" name="prettyEndWithNewline" v-model="transformers.formatting.items.prettify.options.end_with_newline" class="switch" />
+                                  <input type="checkbox" id="prettyEndWithNewline" name="prettyEndWithNewline" v-model="o.transformers.formatting.items.prettify.options.end_with_newline" class="switch" />
                                   <label for="prettyEndWithNewline">end_with_newline</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -618,7 +618,7 @@
                                   List of tags to be considered inline tags.
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.inline">
+                                  <tags-input class="form-input" v-model="o.transformers.formatting.items.prettify.options.inline">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -633,7 +633,7 @@
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyIndentInnerHTML" name="prettyIndentInnerHTML" v-model="transformers.formatting.items.prettify.options.indent_inner_html" class="switch" />
+                                  <input type="checkbox" id="prettyIndentInnerHTML" name="prettyIndentInnerHTML" v-model="o.transformers.formatting.items.prettify.options.indent_inner_html" class="switch" />
                                   <label for="prettyIndentInnerHTML">indent_inner_html</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -642,7 +642,7 @@
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyIndentEmptyLines" name="prettyIndentEmptyLines" v-model="transformers.formatting.items.prettify.options.indent_empty_lines" class="switch" />
+                                  <input type="checkbox" id="prettyIndentEmptyLines" name="prettyIndentEmptyLines" v-model="o.transformers.formatting.items.prettify.options.indent_empty_lines" class="switch" />
                                   <label for="prettyIndentEmptyLines">indent_empty_lines</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -655,7 +655,7 @@
                                   List of tags that should have an extra newline before them.
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.extra_liners">
+                                  <tags-input class="form-input" v-model="o.transformers.formatting.items.prettify.options.extra_liners">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -670,7 +670,7 @@
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyPreserveNewlines" name="prettyPreserveNewlines" v-model="transformers.formatting.items.prettify.options.preserve_newlines" class="switch" />
+                                  <input type="checkbox" id="prettyPreserveNewlines" name="prettyPreserveNewlines" v-model="o.transformers.formatting.items.prettify.options.preserve_newlines" class="switch" />
                                   <label for="prettyPreserveNewlines">preserve_newlines</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -683,7 +683,7 @@
                                   List of tags whose content should not be reformatted,
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.content_unformatted">
+                                  <tags-input class="form-input" v-model="o.transformers.formatting.items.prettify.options.content_unformatted">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -701,32 +701,32 @@
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Maximum number of line-breaks to be preserved in one chunk.
                                 </p>
-                                <input id="prettyMaxPreserveLines" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.max_preserve_newlines">
+                                <input id="prettyMaxPreserveLines" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="o.transformers.formatting.items.prettify.options.max_preserve_newlines">
                               </li>
                               <li class="mb-6">
                                 <label for="wrap_line_length" class="flex mb-2 cursor-pointer">wrap_line_length</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Maximum characters per line (0 disables)
                                 </p>
-                                <input id="wrap_line_length" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.wrap_line_length">
+                                <input id="wrap_line_length" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="o.transformers.formatting.items.prettify.options.wrap_line_length">
                               </li>
                               <li class="mb-6">
                                 <label for="prettyWrapAttributes" class="flex mb-2 cursor-pointer">wrap_attributes</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Wrap attributes to new lines (auto|force|force-aligned|force-expand-multiline|aligned-multiple|preserve|preserve-aligned)
                                 </p>
-                                <input id="prettyWrapAttributes" type="text" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.wrap_attributes">
+                                <input id="prettyWrapAttributes" type="text" class="form-input py-2 text-sm w-auto" v-model="o.transformers.formatting.items.prettify.options.wrap_attributes">
                               </li>
                               <li class="mb-6">
                                 <label for="prettyWrapAttributesIndentSize" class="flex mb-2 cursor-pointer">wrap_attributes_indent_size</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Indent wrapped attributes to after N characters (ignored if <code class="inline-code">wrap-attributes</code> is <code class="inline-code">aligned</code>)
                                 </p>
-                                <input id="prettyWrapAttributesIndentSize" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.wrap_attributes_indent_size">
+                                <input id="prettyWrapAttributesIndentSize" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="o.transformers.formatting.items.prettify.options.wrap_attributes_indent_size">
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyUnescapeStrings" name="prettyUnescapeStrings" v-model="transformers.formatting.items.prettify.options.unescape_strings" class="switch" />
+                                  <input type="checkbox" id="prettyUnescapeStrings" name="prettyUnescapeStrings" v-model="o.transformers.formatting.items.prettify.options.unescape_strings" class="switch" />
                                   <label for="prettyUnescapeStrings">unescape_strings</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -739,7 +739,7 @@
                                   List of tags (defaults to inline tags) that should not be reformatted
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.unformatted">
+                                  <tags-input class="form-input" v-model="o.transformers.formatting.items.prettify.options.unformatted">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -761,7 +761,7 @@
                                   type="text"
                                   id="prettyUnformattedContentDelimiter"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.formatting.items.prettify.options.unformatted_content_delimiter"
+                                  v-model="o.transformers.formatting.items.prettify.options.unformatted_content_delimiter"
                                 >
                               </li>
                             </ul>
@@ -773,14 +773,14 @@
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="minifyToggle" name="minifyToggle" v-model="transformers.formatting.items.minify.enabled" class="switch" />
+                        <input type="checkbox" id="minifyToggle" name="minifyToggle" v-model="o.transformers.formatting.items.minify.enabled" class="switch" />
                         <label for="minifyToggle" class="font-semibold">Minify Code</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses <a href="https://www.npmjs.com/package/html-crush" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">html-crush</a> to minify your HTML code.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.formatting.items.minify.enabled">
+                    <div class="px-2 mt-6" v-show="o.transformers.formatting.items.minify.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
@@ -790,18 +790,18 @@
                             While a line of code can be up to <a href="https://tools.ietf.org/html/rfc5322#section-2.1.1" target="_blank" rel="nofollow noopener noreferrer" class="text-blue-500 hover:text-blue-700">998 characters</a> long, some email clients require even less.
                             A conservative 500 is usually recommended for HTML emails.
                           </p>
-                          <input id="minifyLineLengthLimit" type="number" min="1" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.minify.options.lineLengthLimit">
+                          <input id="minifyLineLengthLimit" type="number" min="1" class="form-input py-2 text-sm w-auto" v-model="o.transformers.formatting.items.minify.options.lineLengthLimit">
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="minifyremoveIndentations" name="minifyremoveIndentations" v-model="transformers.formatting.items.minify.options.removeIndentations" class="switch" />
+                            <input type="checkbox" id="minifyremoveIndentations" name="minifyremoveIndentations" v-model="o.transformers.formatting.items.minify.options.removeIndentations" class="switch" />
                             <label for="minifyremoveIndentations">removeIndentations</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">Should indentations be removed?</p>
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="minifyRemoveLineBreaks" name="minifyRemoveLineBreaks" v-model="transformers.formatting.items.minify.options.removeLineBreaks" class="switch" />
+                            <input type="checkbox" id="minifyRemoveLineBreaks" name="minifyRemoveLineBreaks" v-model="o.transformers.formatting.items.minify.options.removeLineBreaks" class="switch" />
                             <label for="minifyRemoveLineBreaks">removeLineBreaks</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">Should line breaks be removed?</p>
@@ -812,7 +812,7 @@
                             When any of given strings are encountered AND <code class="inline-code">removeLineBreaks</code> option is on, current line will be terminated.
                           </p>
                           <div>
-                            <tags-input class="form-input" v-model="transformers.formatting.items.minify.options.breakToTheLeftOf">
+                            <tags-input class="form-input" v-model="o.transformers.formatting.items.minify.options.breakToTheLeftOf">
                               <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                 <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                   <span>{{ tag }}</span>
@@ -831,14 +831,14 @@
                   <li class="mb-8 pb-8">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="plaintextToggle" name="plaintextToggle" v-model="transformers.formatting.items.plaintext.enabled" class="switch" />
+                        <input type="checkbox" id="plaintextToggle" name="plaintextToggle" v-model="o.transformers.formatting.items.plaintext.enabled" class="switch" />
                         <label for="plaintextToggle" class="font-semibold">Plaintext</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses <a href="https://www.npmjs.com/package/string-strip-html" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">string-strip-html</a> to generate a plaintext version of your HTML email.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.formatting.items.plaintext.enabled">
+                    <div class="px-2 mt-6" v-show="o.transformers.formatting.items.plaintext.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
@@ -847,7 +847,7 @@
                             Tags that should not be removed. Useful for creating richtext versions.
                           </p>
                           <div>
-                            <tags-input class="form-input" v-model="transformers.formatting.items.plaintext.options.ignoreTags">
+                            <tags-input class="form-input" v-model="o.transformers.formatting.items.plaintext.options.ignoreTags">
                               <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                 <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                   <span>{{ tag }}</span>
@@ -866,7 +866,7 @@
                             Remove only these tags, nothing else.
                           </p>
                           <div>
-                            <tags-input class="form-input" v-model="transformers.formatting.items.plaintext.options.onlyStripTags">
+                            <tags-input class="form-input" v-model="o.transformers.formatting.items.plaintext.options.onlyStripTags">
                               <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                 <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                   <span>{{ tag }}</span>
@@ -885,7 +885,7 @@
                             Completely remove these tags (including their content).
                           </p>
                           <div>
-                            <tags-input class="form-input" v-model="transformers.formatting.items.plaintext.options.stripTogetherWithTheirContents">
+                            <tags-input class="form-input" v-model="o.transformers.formatting.items.plaintext.options.stripTogetherWithTheirContents">
                               <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                 <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                   <span>{{ tag }}</span>
@@ -900,7 +900,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="plaintextSkipHtmlDecoding" name="plaintextSkipHtmlDecoding" v-model="transformers.formatting.items.plaintext.options.skipHtmlDecoding" class="switch" />
+                            <input type="checkbox" id="plaintextSkipHtmlDecoding" name="plaintextSkipHtmlDecoding" v-model="o.transformers.formatting.items.plaintext.options.skipHtmlDecoding" class="switch" />
                             <label for="plaintextSkipHtmlDecoding">skipHtmlDecoding</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -909,7 +909,7 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="plaintextTrimOnlySpaces" name="plaintextTrimOnlySpaces" v-model="transformers.formatting.items.plaintext.options.trimOnlySpaces" class="switch" />
+                            <input type="checkbox" id="plaintextTrimOnlySpaces" name="plaintextTrimOnlySpaces" v-model="o.transformers.formatting.items.plaintext.options.trimOnlySpaces" class="switch" />
                             <label for="plaintextTrimOnlySpaces">trimOnlySpaces</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -918,17 +918,17 @@
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="plaintextDumpLinkHrefsNearby" name="plaintextDumpLinkHrefsNearby" v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.enabled" class="switch" />
+                            <input type="checkbox" id="plaintextDumpLinkHrefsNearby" name="plaintextDumpLinkHrefsNearby" v-model="o.transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.enabled" class="switch" />
                             <label for="plaintextDumpLinkHrefsNearby">dumpLinkHrefsNearby</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
                             Outputs URLs in plaintext.
                           </p>
-                          <div class="px-12 mt-6" v-show="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.enabled">
+                          <div class="px-12 mt-6" v-show="o.transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.enabled">
                             <ul>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="plaintextPutOnNewLine" name="plaintextPutOnNewLine" v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.putOnNewLine" class="switch" />
+                                  <input type="checkbox" id="plaintextPutOnNewLine" name="plaintextPutOnNewLine" v-model="o.transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.putOnNewLine" class="switch" />
                                   <label for="plaintextPutOnNewLine">putOnNewLine</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -944,7 +944,7 @@
                                   id="plaintextWrapHeads"
                                   type="text"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.wrapHeads"
+                                  v-model="o.transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.wrapHeads"
                                 >
                               </li>
                               <li class="mb-6">
@@ -956,7 +956,7 @@
                                   id="plaintextWrapTails"
                                   type="text"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.wrapTails"
+                                  v-model="o.transformers.formatting.items.plaintext.options.dumpLinkHrefsNearby.wrapTails"
                                 >
                               </li>
                             </ul>
@@ -971,16 +971,16 @@
             </div>
           </div>
           <div id="preview" class="h-full bg-white shadow-2xl rounded-tr rounded-br">
-            <span class="iframe-width-helper" :class="{'hidden': iframeWidth < 1}">{{ iframeWidth + 'px' }}</span>
+            <span class="iframe-width-helper" :class="{'hidden': o.iframeWidth < 1}">{{ o.iframeWidth + 'px' }}</span>
             <codemirror
-              v-show="activeOutputTab == 'html'"
-              v-model="html.transformed"
-              ref="codemirror"
-              :options="{...codemirrorOptions, autofocus: false}"
+              v-show="o.activeOutputTab == 'html'"
+              v-model="o.html.transformed"
+              ref="codemirrorOutput"
+              :options="{...o.codemirrorOptions, autofocus: false}"
               class="h-full"
             />
             <iframe
-              v-show="activeOutputTab == 'preview'"
+              v-show="o.activeOutputTab == 'preview'"
               ref="preview"
               title="preview"
               class="w-full h-full rounded-tr rounded-br"
@@ -988,7 +988,7 @@
               allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor"
               allowtransparency="true"
               allowpaymentrequest="true"
-              :srcdoc="html.transformed || html.original"
+              :srcdoc="o.html.transformed || o.html.original"
             >
             </iframe>
           </div>
@@ -1018,162 +1018,163 @@ export default {
   },
   data: () => {
     return {
-      altering: false,
-      html: {
-        original: '',
-        transformed: '',
-      },
-      activeInputTab: 'html',
-      activeOutputTab: 'html',
-      activetab: 'html',
-      activeTransformerTab: 'inliner',
-      iframeWidth: 0,
-      panelWidths: {
-        input: 0,
-        output: 0,
-      },
-      codemirrorOptions: {
-        mode: 'htmlmixed',
-        tabSize: 2,
-        autofocus: true,
-        lineNumbers: true,
-        theme: 'github',
-        styleSelectedText: true,
-      },
-      transformers: {
-        inliner: {
-          name: 'CSS Inliner',
-          enabled: false,
-          options: {
-            applyAttributesTableElements: true,
-            applyHeightAttributes: true,
-            applyStyleTags: true,
-            applyWidthAttributes: true,
-            inlinePseudoElements: false,
-            preserveFontFaces: true,
-            preserveImportant: false,
-            preserveMediaQueries: true,
-            preserveKeyFrames: true,
-            preservePseudos: true,
-            removeStyleTags: true,
-          },
+      o: {
+        altering: false,
+        html: {
+          original: '',
+          transformed: '',
         },
-        cleaner: {
-          name: 'Code Cleanup',
-          tools: {
-            removeUnusedCSS: {
-              name: 'Remove unused CSS',
-              enabled: false,
-              options: {
-                uglify: false,
-                removeHTMLComments: true,
-                whitelist: [],
-                backend: [],
-                doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif'],
-              },
-            },
-            replaceStrings: {
-              name: 'Replace strings',
-              enabled: false,
-              pairs: [],
-            },
-            sixDigitHEX: {
-              name: 'Six-digit HEX colors',
-              enabled: false,
+        activeInputTab: 'html',
+        activeOutputTab: 'html',
+        activeTransformerTab: 'inliner',
+        iframeWidth: 0,
+        panelWidths: {
+          input: 0,
+          output: 0,
+        },
+        codemirrorOptions: {
+          mode: 'htmlmixed',
+          tabSize: 2,
+          autofocus: true,
+          lineNumbers: true,
+          theme: 'github',
+          styleSelectedText: true,
+        },
+        transformers: {
+          inliner: {
+            name: 'CSS Inliner',
+            enabled: false,
+            options: {
+              applyAttributesTableElements: true,
+              applyHeightAttributes: true,
+              applyStyleTags: true,
+              applyWidthAttributes: true,
+              inlinePseudoElements: false,
+              preserveFontFaces: true,
+              preserveImportant: false,
+              preserveMediaQueries: true,
+              preserveKeyFrames: true,
+              preservePseudos: true,
+              removeStyleTags: true,
             },
           },
-        },
-        extraAttributes: {
-          name: 'Extra Attributes',
-          elements: [],
-        },
-        urls: {
-          name: 'URLs',
-          items: {
-            baseImageURL: {
-              name: 'Base Image URL',
-              url: '',
-            },
-            urlParameters: {
-              name: 'URL Parameters',
-              pairs: [],
+          cleaner: {
+            name: 'Code Cleanup',
+            tools: {
+              removeUnusedCSS: {
+                name: 'Remove unused CSS',
+                enabled: false,
+                options: {
+                  uglify: false,
+                  removeHTMLComments: true,
+                  whitelist: [],
+                  backend: [],
+                  doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif'],
+                },
+              },
+              replaceStrings: {
+                name: 'Replace strings',
+                enabled: false,
+                pairs: [],
+              },
+              sixDigitHEX: {
+                name: 'Six-digit HEX colors',
+                enabled: false,
+              },
             },
           },
-        },
-        formatting: {
-          name: 'Formatting',
-          items: {
-            prettify: {
-              name: 'Prettify',
-              enabled: false,
-              options: {
-                ocd: true,
-                indent_size: 2,
-                indent_char: ' ',
-                indent_with_tabs: false,
-                eol: '\\n',
-                end_with_newline: false,
-                inline: [],
-                indent_inner_html: false,
-                indent_empty_lines: false,
-                extra_liners: [],
-                preserve_newlines: true,
-                content_unformatted: ['pre'],
-                max_preserve_newlines: 10,
-                wrap_line_length: 0,
-                wrap_attributes: 'auto',
-                wrap_attributes_indent_size: 2,
-                unescape_strings: false,
-                unformatted: [],
-                unformatted_content_delimiter: '',
+          extraAttributes: {
+            name: 'Extra Attributes',
+            elements: [],
+          },
+          urls: {
+            name: 'URLs',
+            items: {
+              baseImageURL: {
+                name: 'Base Image URL',
+                url: '',
+              },
+              urlParameters: {
+                name: 'URL Parameters',
+                pairs: [],
               },
             },
-            minify: {
-              name: 'Minify',
-              enabled: false,
-              options: {
-                lineLengthLimit: 500,
-                removeIndentations: true,
-                removeLineBreaks: true,
-                breakToTheLeftOf: [
-                  '</td',
-                  '<html',
-                  '<head',
-                  '<meta',
-                  '<table',
-                  '<!DOCTYPE',
-                  '<style',
-                  '</style',
-                  '<title',
-                  '<body',
-                  '@media',
-                  '</html',
-                  '</body',
-                  '<!--[if',
-                  '<!--<![endif'
-                ],
+          },
+          formatting: {
+            name: 'Formatting',
+            items: {
+              prettify: {
+                name: 'Prettify',
+                enabled: false,
+                options: {
+                  ocd: true,
+                  indent_size: 2,
+                  indent_char: ' ',
+                  indent_with_tabs: false,
+                  eol: '\\n',
+                  end_with_newline: false,
+                  inline: [],
+                  indent_inner_html: false,
+                  indent_empty_lines: false,
+                  extra_liners: [],
+                  preserve_newlines: true,
+                  content_unformatted: ['pre'],
+                  max_preserve_newlines: 10,
+                  wrap_line_length: 0,
+                  wrap_attributes: 'auto',
+                  wrap_attributes_indent_size: 2,
+                  unescape_strings: false,
+                  unformatted: [],
+                  unformatted_content_delimiter: '',
+                },
               },
-            },
-            plaintext: {
-              name: 'Plaintext',
-              enabled: false,
-              options: {
-                ignoreTags: [],
-                onlyStripTags: [],
-                stripTogetherWithTheirContents: ['script', 'style', 'xml'],
-                skipHtmlDecoding: false,
-                trimOnlySpaces: false,
-                dumpLinkHrefsNearby: {
-                  enabled: false,
-                  putOnNewLine: false,
-                  wrapHeads: '',
-                  wrapTails: '',
+              minify: {
+                name: 'Minify',
+                enabled: false,
+                options: {
+                  lineLengthLimit: 500,
+                  removeIndentations: true,
+                  removeLineBreaks: true,
+                  breakToTheLeftOf: [
+                    '</td',
+                    '<html',
+                    '<head',
+                    '<meta',
+                    '<table',
+                    '<!DOCTYPE',
+                    '<style',
+                    '</style',
+                    '<title',
+                    '<body',
+                    '@media',
+                    '</html',
+                    '</body',
+                    '<!--[if',
+                    '<!--<![endif'
+                  ],
+                },
+              },
+              plaintext: {
+                name: 'Plaintext',
+                enabled: false,
+                options: {
+                  ignoreTags: [],
+                  onlyStripTags: [],
+                  stripTogetherWithTheirContents: ['script', 'style', 'xml'],
+                  skipHtmlDecoding: false,
+                  trimOnlySpaces: false,
+                  dumpLinkHrefsNearby: {
+                    enabled: false,
+                    putOnNewLine: false,
+                    wrapHeads: '',
+                    wrapTails: '',
+                  },
                 },
               },
             },
           },
         },
-      },
+      }
     }
   },
   mounted () {
@@ -1191,15 +1192,19 @@ export default {
         $vm.panelWidths.output = $vm.getElementWidth(outputArea)
       },
       onDragEnd () {
-        $vm.iframeWidth = 0
+        $vm.o.iframeWidth = 0
       }
     })
 
     $vm.resetGutterPosition()
 
+    if (localStorage.getItem('alter-email-data')) {
+      this.o = JSON.parse(localStorage.getItem('alter-email-data'))
+    }
+
     document.body.addEventListener('keyup', e => {
       if (e.keyCode === 27) {
-        $vm.showAbout = false
+        $vm.o.showAbout = false
       }
     })
   },
@@ -1222,13 +1227,6 @@ export default {
         }
       })
     },
-    switchTab (name) {
-      this.activetab = name
-      this.$refs.codemirror.editor.focus()
-    },
-    switchTransformerTab (name) {
-      this.activeTransformerTab = name
-    },
     getElementWidth (el) {
       return el.clientWidth
     },
@@ -1237,8 +1235,8 @@ export default {
     },
     splitReset () {
       splitPanes.setSizes([50, 50])
-      this.panelWidths.input = 0
-      this.panelWidths.output = 0
+      this.o.panelWidths.input = 0
+      this.o.panelWidths.output = 0
     },
     resetGutterPosition () {
       let gutter = document.getElementsByClassName('gutter')
@@ -1251,8 +1249,8 @@ export default {
         fetch(`/.netlify/functions/transform`, {
           method: "POST",
           body: JSON.stringify({
-            html: $vm.html.original,
-            config: $vm.transformers,
+            html: $vm.o.html.original,
+            config: $vm.o.transformers,
           })
         })
         .then(response => response.json())
@@ -1266,7 +1264,7 @@ export default {
     handleSubmit () {
       const $vm = this
 
-      if ($vm.html.original.length < 1) {
+      if ($vm.o.html.original.length < 1) {
         Swal.fire({
           title: 'Missing content',
           text: 'Please add at least an HTML version.',
@@ -1277,7 +1275,7 @@ export default {
         return
       }
 
-      $vm.altering = true
+      $vm.o.altering = true
 
       $vm.submitToServer().then(response => {
         if (response.error) {
@@ -1292,59 +1290,73 @@ export default {
             type: 'error',
             confirmButtonText: 'Close',
             onOpen: () => {
-              $vm.altering = false
+              $vm.o.altering = false
             },
           })
         } else {
           if (response.html) {
-            $vm.html.transformed = response.html
+            $vm.o.html.transformed = response.html
 
             if (process.env.NODE_ENV !== 'development') {
               // eslint-disable-next-line
               gtag('event', 'transform', {'event_category': 'Transformations', 'value': response.transforms})
             }
           }
-          $vm.altering = false
+          $vm.o.altering = false
         }
       })
     },
   },
   computed: {
     originalFileSizeUnix () {
-      return ByteSize.count(this.html.original)
+      return ByteSize.count(this.o.html.original)
     },
     originalFormattedFileSizeUnix () {
-      return this.html.original.length > 0 ? '~ ' + ByteSize.format(this.originalFileSizeUnix) : '0 KB'
+      return this.o.html.original.length > 0 ? '~ ' + ByteSize.format(this.originalFileSizeUnix) : '0 KB'
     },
     transformedFileSizeUnix () {
-      return ByteSize.count(this.html.transformed)
+      return ByteSize.count(this.o.html.transformed)
     },
     transformedFormattedFileSizeUnix () {
-      return this.html.transformed.length > 0 ? '~ ' + ByteSize.format(this.transformedFileSizeUnix) : '0 KB'
+      return this.o.html.transformed.length > 0 ? '~ ' + ByteSize.format(this.transformedFileSizeUnix) : '0 KB'
     },
   },
   watch: {
-    'html.original': function (newVal) {
-      this.html.transformed = this.html.transformed == '' ? newVal : this.html.transformed
+    'o.html.original': function (newVal) { // eslint-disable-line
+      this.o.html.transformed = this.o.html.transformed == '' ? newVal : this.o.html.transformed
+      // localStorage.setItem('alterEmail', JSON.stringify(this.o))
     },
-    'transformers.formatting.items.prettify.enabled': function (newVal) {
+    'o.transformers.formatting.items.prettify.enabled': function (newVal) {
       if (newVal) {
-        this.transformers.formatting.items.minify.enabled = false
+        this.o.transformers.formatting.items.minify.enabled = false
       }
     },
-    'transformers.formatting.items.minify.enabled': function (newVal) {
+    'o.transformers.formatting.items.minify.enabled': function (newVal) {
       if (newVal) {
-        this.transformers.formatting.items.prettify.enabled = false
+        this.o.transformers.formatting.items.prettify.enabled = false
       }
     },
-    'transformers.formatting.items.plaintext.enabled': function (newVal) {
+    'o.transformers.formatting.items.plaintext.enabled': function (newVal) {
       if (newVal) {
-        this.transformers.inliner.enabled = false
-        this.transformers.cleaner.tools.removeUnusedCSS.enabled = false
-        this.transformers.cleaner.tools.sixDigitHEX.enabled = false
-        this.transformers.formatting.items.prettify.enabled = false
-        this.transformers.formatting.items.minify.enabled = false
+        this.o.transformers.inliner.enabled = false
+        this.o.transformers.cleaner.tools.removeUnusedCSS.enabled = false
+        this.o.transformers.cleaner.tools.sixDigitHEX.enabled = false
+        this.o.transformers.formatting.items.prettify.enabled = false
+        this.o.transformers.formatting.items.minify.enabled = false
       }
+    },
+    'o.activeInputTab': function (newVal, oldVal) { // eslint-disable-line
+      if (newVal == 'html') {
+        setTimeout(() => {
+          this.$refs.codemirrorInput.editor.refresh()
+        }, 1);
+      }
+    },
+    'o': {
+      handler: function (newVal, oldVal) { // eslint-disable-line
+        localStorage.setItem('alter-email-data', JSON.stringify(this.o))
+      },
+      deep: true
     },
   },
 }
