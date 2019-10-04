@@ -369,7 +369,7 @@
                       </div>
                     </div>
                   </li>
-                  <li class="mb-8 pb-8 border-b border-gray-200">
+                  <li class="mb-8 pb-8">
                     <div class="px-2">
                       <div class="checkbox-toggle">
                         <input type="checkbox" id="sixDigitHEXToggle" name="sixDigitHEXToggle" v-model="transformers.cleaner.tools.sixDigitHEX.enabled" class="switch" />
@@ -386,7 +386,7 @@
               <!-- Extra Attributes -->
               <div class="p-8" v-show="activeTransformerTab == 'extraAttributes'">
                 <ul>
-                  <li class="mb-8 pb-8 border-b border-gray-200">
+                  <li class="mb-8 pb-8">
                     <p
                       class="italic text-gray-600"
                       :class="{'mb-8': transformers.extraAttributes.elements.length > 0}"
@@ -466,7 +466,7 @@
                       <input id="baseImageURL" type="text" class="form-input py-2 text-sm" placeholder="https://" v-model="transformers.urls.items.baseImageURL.url">
                     </div>
                   </li>
-                  <li class="mb-8 pb-8 border-b border-gray-200">
+                  <li class="mb-8 pb-8">
                     <div class="px-2">
                       <label class="flex mb-2">URL Parameters</label>
                       <p class="text-gray-600 italic text-sm mb-4">
@@ -523,25 +523,25 @@
                 </ul>
               </div>
 
-              <!-- Prettify -->
-              <div class="p-8" v-show="activeTransformerTab == 'prettify'">
+              <!-- Formatting -->
+              <div class="p-8" v-show="activeTransformerTab == 'formatting'">
                 <ul>
                   <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="prettifyToggle" name="prettifyToggle" v-model="transformers.prettify.enabled" class="switch" />
+                        <input type="checkbox" id="prettifyToggle" name="prettifyToggle" v-model="transformers.formatting.items.prettify.enabled" class="switch" />
                         <label for="prettifyToggle" class="font-semibold">Prettify Code</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses <a href="https://www.npmjs.com/package/pretty" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">pretty</a> to pretty-print your HTML code.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.prettify.enabled">
+                    <div class="px-2 mt-6" v-show="transformers.formatting.items.prettify.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="prettyOCD" name="prettyOCD" v-model="transformers.prettify.options.ocd" class="switch" />
+                            <input type="checkbox" id="prettyOCD" name="prettyOCD" v-model="transformers.formatting.items.prettify.options.ocd" class="switch" />
                             <label for="prettyOCD">ocd</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">
@@ -560,7 +560,7 @@
                               Configure <a href="https://www.npmjs.com/package/js-beautify" target="_blank" rel="nofollow noreferrer noopener" class="text-blue-500 hover:text-blue-700">js-beautify</a> options.
                             </p>
                             <ul>
-                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: transformers.prettify.options.indent_with_tabs}">
+                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: transformers.formatting.items.prettify.options.indent_with_tabs}">
                                 <label for="prettyIndentSize" class="flex mb-2 cursor-pointer">indent_size</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   How many characters should be used for indentation size.
@@ -570,11 +570,11 @@
                                   type="number"
                                   min="0"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.prettify.options.indent_size"
-                                  :disabled="transformers.prettify.options.indent_with_tabs"
+                                  v-model="transformers.formatting.items.prettify.options.indent_size"
+                                  :disabled="transformers.formatting.items.prettify.options.indent_with_tabs"
                                 >
                               </li>
-                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: transformers.prettify.options.indent_with_tabs}">
+                              <li class="mb-6" :class="{['opacity-50 pointer-events-none select-none']: transformers.formatting.items.prettify.options.indent_with_tabs}">
                                 <label for="prettyIndentChar" class="flex mb-2 cursor-pointer">indent_char</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   What character should be used for indentation. Default is one space character.
@@ -583,13 +583,13 @@
                                   id="prettyIndentChar"
                                   type="text"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.prettify.options.indent_char"
-                                  :disabled="transformers.prettify.options.indent_with_tabs"
+                                  v-model="transformers.formatting.items.prettify.options.indent_char"
+                                  :disabled="transformers.formatting.items.prettify.options.indent_with_tabs"
                                 >
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyIndentWithTabs" name="prettyIndentWithTabs" v-model="transformers.prettify.options.indent_with_tabs" class="switch" />
+                                  <input type="checkbox" id="prettyIndentWithTabs" name="prettyIndentWithTabs" v-model="transformers.formatting.items.prettify.options.indent_with_tabs" class="switch" />
                                   <label for="prettyIndentWithTabs">indent_with_tabs</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -601,11 +601,11 @@
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Character(s) to use as line terminators. (default: <code class="inline-code">\\n</code>)
                                 </p>
-                                <input id="prettyEOL" type="text" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.eol">
+                                <input id="prettyEOL" type="text" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.eol">
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyEndWithNewline" name="prettyEndWithNewline" v-model="transformers.prettify.options.end_with_newline" class="switch" />
+                                  <input type="checkbox" id="prettyEndWithNewline" name="prettyEndWithNewline" v-model="transformers.formatting.items.prettify.options.end_with_newline" class="switch" />
                                   <label for="prettyEndWithNewline">end_with_newline</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -618,7 +618,7 @@
                                   List of tags to be considered inline tags.
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.prettify.options.inline">
+                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.inline">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -633,7 +633,7 @@
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyIndentInnerHTML" name="prettyIndentInnerHTML" v-model="transformers.prettify.options.indent_inner_html" class="switch" />
+                                  <input type="checkbox" id="prettyIndentInnerHTML" name="prettyIndentInnerHTML" v-model="transformers.formatting.items.prettify.options.indent_inner_html" class="switch" />
                                   <label for="prettyIndentInnerHTML">indent_inner_html</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -642,7 +642,7 @@
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyIndentEmptyLines" name="prettyIndentEmptyLines" v-model="transformers.prettify.options.indent_empty_lines" class="switch" />
+                                  <input type="checkbox" id="prettyIndentEmptyLines" name="prettyIndentEmptyLines" v-model="transformers.formatting.items.prettify.options.indent_empty_lines" class="switch" />
                                   <label for="prettyIndentEmptyLines">indent_empty_lines</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -655,7 +655,7 @@
                                   List of tags that should have an extra newline before them.
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.prettify.options.extra_liners">
+                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.extra_liners">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -670,7 +670,7 @@
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyPreserveNewlines" name="prettyPreserveNewlines" v-model="transformers.prettify.options.preserve_newlines" class="switch" />
+                                  <input type="checkbox" id="prettyPreserveNewlines" name="prettyPreserveNewlines" v-model="transformers.formatting.items.prettify.options.preserve_newlines" class="switch" />
                                   <label for="prettyPreserveNewlines">preserve_newlines</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -683,7 +683,7 @@
                                   List of tags whose content should not be reformatted,
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.prettify.options.content_unformatted">
+                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.content_unformatted">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -701,32 +701,32 @@
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Maximum number of line-breaks to be preserved in one chunk.
                                 </p>
-                                <input id="prettyMaxPreserveLines" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.max_preserve_newlines">
+                                <input id="prettyMaxPreserveLines" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.max_preserve_newlines">
                               </li>
                               <li class="mb-6">
                                 <label for="wrap_line_length" class="flex mb-2 cursor-pointer">wrap_line_length</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Maximum characters per line (0 disables)
                                 </p>
-                                <input id="wrap_line_length" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.wrap_line_length">
+                                <input id="wrap_line_length" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.wrap_line_length">
                               </li>
                               <li class="mb-6">
                                 <label for="prettyWrapAttributes" class="flex mb-2 cursor-pointer">wrap_attributes</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Wrap attributes to new lines (auto|force|force-aligned|force-expand-multiline|aligned-multiple|preserve|preserve-aligned)
                                 </p>
-                                <input id="prettyWrapAttributes" type="text" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.wrap_attributes">
+                                <input id="prettyWrapAttributes" type="text" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.wrap_attributes">
                               </li>
                               <li class="mb-6">
                                 <label for="prettyWrapAttributesIndentSize" class="flex mb-2 cursor-pointer">wrap_attributes_indent_size</label>
                                 <p class="text-gray-600 italic text-sm mb-4">
                                   Indent wrapped attributes to after N characters (ignored if <code class="inline-code">wrap-attributes</code> is <code class="inline-code">aligned</code>)
                                 </p>
-                                <input id="prettyWrapAttributesIndentSize" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.prettify.options.wrap_attributes_indent_size">
+                                <input id="prettyWrapAttributesIndentSize" type="number" min="0" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.prettify.options.wrap_attributes_indent_size">
                               </li>
                               <li class="mb-6">
                                 <div class="checkbox-toggle">
-                                  <input type="checkbox" id="prettyUnescapeStrings" name="prettyUnescapeStrings" v-model="transformers.prettify.options.unescape_strings" class="switch" />
+                                  <input type="checkbox" id="prettyUnescapeStrings" name="prettyUnescapeStrings" v-model="transformers.formatting.items.prettify.options.unescape_strings" class="switch" />
                                   <label for="prettyUnescapeStrings">unescape_strings</label>
                                 </div>
                                 <p class="text-gray-600 italic text-sm pl-12">
@@ -739,7 +739,7 @@
                                   List of tags (defaults to inline tags) that should not be reformatted
                                 </p>
                                 <div>
-                                  <tags-input class="form-input" v-model="transformers.prettify.options.unformatted">
+                                  <tags-input class="form-input" v-model="transformers.formatting.items.prettify.options.unformatted">
                                     <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                       <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                         <span>{{ tag }}</span>
@@ -761,7 +761,7 @@
                                   type="text"
                                   id="prettyUnformattedContentDelimiter"
                                   class="form-input py-2 text-sm w-auto"
-                                  v-model="transformers.prettify.options.unformatted_content_delimiter"
+                                  v-model="transformers.formatting.items.prettify.options.unformatted_content_delimiter"
                                 >
                               </li>
                             </ul>
@@ -770,23 +770,17 @@
                       </ul>
                     </div>
                   </li>
-                </ul>
-              </div>
-
-              <!-- Minify -->
-              <div class="p-8" v-show="activeTransformerTab == 'minify'">
-                <ul>
-                  <li class="mb-8 pb-8 border-b border-gray-200">
+                  <li class="mb-8 pb-8">
                     <div class="px-2">
                       <div class="checkbox-toggle">
-                        <input type="checkbox" id="minifyToggle" name="minifyToggle" v-model="transformers.minify.enabled" class="switch" />
+                        <input type="checkbox" id="minifyToggle" name="minifyToggle" v-model="transformers.formatting.items.minify.enabled" class="switch" />
                         <label for="minifyToggle" class="font-semibold">Minify Code</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
                         Uses <a href="https://www.npmjs.com/package/html-crush" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">html-crush</a> to minify your HTML code.
                       </p>
                     </div>
-                    <div class="px-2 mt-6" v-show="transformers.minify.enabled">
+                    <div class="px-2 mt-6" v-show="transformers.formatting.items.minify.enabled">
                       <h3 class="text-base text-black font-semibold mb-6">Options</h3>
                       <ul>
                         <li class="mb-6">
@@ -796,18 +790,18 @@
                             While a line of code can be up to <a href="https://tools.ietf.org/html/rfc5322#section-2.1.1" target="_blank" rel="nofollow noopener noreferrer" class="text-blue-500 hover:text-blue-700">998 characters</a> long, some email clients require even less.
                             A conservative 500 is usually recommended for HTML emails.
                           </p>
-                          <input id="minifyLineLengthLimit" type="number" min="1" class="form-input py-2 text-sm w-auto" v-model="transformers.minify.options.lineLengthLimit">
+                          <input id="minifyLineLengthLimit" type="number" min="1" class="form-input py-2 text-sm w-auto" v-model="transformers.formatting.items.minify.options.lineLengthLimit">
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="minifyremoveIndentations" name="minifyremoveIndentations" v-model="transformers.minify.options.removeIndentations" class="switch" />
+                            <input type="checkbox" id="minifyremoveIndentations" name="minifyremoveIndentations" v-model="transformers.formatting.items.minify.options.removeIndentations" class="switch" />
                             <label for="minifyremoveIndentations">removeIndentations</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">Should indentations be removed?</p>
                         </li>
                         <li class="mb-6">
                           <div class="checkbox-toggle">
-                            <input type="checkbox" id="minifyRemoveLineBreaks" name="minifyRemoveLineBreaks" v-model="transformers.minify.options.removeLineBreaks" class="switch" />
+                            <input type="checkbox" id="minifyRemoveLineBreaks" name="minifyRemoveLineBreaks" v-model="transformers.formatting.items.minify.options.removeLineBreaks" class="switch" />
                             <label for="minifyRemoveLineBreaks">removeLineBreaks</label>
                           </div>
                           <p class="text-gray-600 italic text-sm pl-12">Should line breaks be removed?</p>
@@ -818,7 +812,7 @@
                             When any of given strings are encountered AND <code class="inline-code">removeLineBreaks</code> option is on, current line will be terminated.
                           </p>
                           <div>
-                            <tags-input class="form-input" v-model="transformers.minify.options.breakToTheLeftOf">
+                            <tags-input class="form-input" v-model="transformers.formatting.items.minify.options.breakToTheLeftOf">
                               <div class="tags-input" slot-scope="{ tags, removeTag, inputAttrs, inputEvents }">
                                 <span class="tags-input-tag" v-for="(tag, index) in tags" :key="index">
                                   <span>{{ tag }}</span>
@@ -970,55 +964,60 @@ export default {
             },
           },
         },
-        prettify: {
-          name: 'Prettify',
-          enabled: false,
-          options: {
-            ocd: true,
-            indent_size: 2,
-            indent_char: ' ',
-            indent_with_tabs: false,
-            eol: '\\n',
-            end_with_newline: false,
-            inline: [],
-            indent_inner_html: false,
-            indent_empty_lines: false,
-            extra_liners: [],
-            preserve_newlines: true,
-            content_unformatted: ['pre'],
-            max_preserve_newlines: 10,
-            wrap_line_length: 0,
-            wrap_attributes: 'auto',
-            wrap_attributes_indent_size: 2,
-            unescape_strings: false,
-            unformatted: [],
-            unformatted_content_delimiter: '',
-          },
-        },
-        minify: {
-          name: 'Minify',
-          enabled: false,
-          options: {
-            lineLengthLimit: 500,
-            removeIndentations: true,
-            removeLineBreaks: true,
-            breakToTheLeftOf: [
-              '</td',
-              '<html',
-              '<head',
-              '<meta',
-              '<table',
-              '<!DOCTYPE',
-              '<style',
-              '</style',
-              '<title',
-              '<body',
-              '@media',
-              '</html',
-              '</body',
-              '<!--[if',
-              '<!--<![endif'
-            ],
+        formatting: {
+          name: 'Formatting',
+          items: {
+            prettify: {
+              name: 'Prettify',
+              enabled: false,
+              options: {
+                ocd: true,
+                indent_size: 2,
+                indent_char: ' ',
+                indent_with_tabs: false,
+                eol: '\\n',
+                end_with_newline: false,
+                inline: [],
+                indent_inner_html: false,
+                indent_empty_lines: false,
+                extra_liners: [],
+                preserve_newlines: true,
+                content_unformatted: ['pre'],
+                max_preserve_newlines: 10,
+                wrap_line_length: 0,
+                wrap_attributes: 'auto',
+                wrap_attributes_indent_size: 2,
+                unescape_strings: false,
+                unformatted: [],
+                unformatted_content_delimiter: '',
+              },
+            },
+            minify: {
+              name: 'Minify',
+              enabled: false,
+              options: {
+                lineLengthLimit: 500,
+                removeIndentations: true,
+                removeLineBreaks: true,
+                breakToTheLeftOf: [
+                  '</td',
+                  '<html',
+                  '<head',
+                  '<meta',
+                  '<table',
+                  '<!DOCTYPE',
+                  '<style',
+                  '</style',
+                  '<title',
+                  '<body',
+                  '@media',
+                  '</html',
+                  '</body',
+                  '<!--[if',
+                  '<!--<![endif'
+                ],
+              },
+            },
           },
         },
       },
@@ -1175,16 +1174,16 @@ export default {
     'html.original': function (newVal) {
       this.html.transformed = this.html.transformed == '' ? newVal : this.html.transformed
     },
-    'transformers.cleaner.tools.detergent.options.removeLineBreaks': function (newVal) {
+    'transformers.formatting.items.prettify.enabled': function (newVal) {
       if (newVal) {
-        this.transformers.cleaner.tools.detergent.options.replaceLineBreaks = false
+        this.transformers.formatting.items.minify.enabled = false
       }
     },
-    'transformers.cleaner.tools.detergent.options.replaceLineBreaks': function (newVal) {
+    'transformers.formatting.items.minify.enabled': function (newVal) {
       if (newVal) {
-        this.transformers.cleaner.tools.detergent.options.removeLineBreaks = false
+        this.transformers.formatting.items.prettify.enabled = false
       }
-    }
+    },
   },
 }
 </script>
