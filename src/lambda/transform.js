@@ -118,14 +118,14 @@ exports.handler = async function (event, context, callback) {
     }
 
     // Prettify
-    if (config.prettify.enabled) {
-      html = prettify(html, config.prettify.options)
+    if (config.formatting.items.prettify.enabled) {
+      html = prettify(html, config.formatting.items.prettify.options)
       transforms++
     }
 
     // Minify
-    if (config.minify.enabled) {
-      html = crush(html, config.minify.options).result
+    if (config.formatting.items.minify.enabled) {
+      html = crush(html, config.formatting.items.minify.options).result
       transforms++
     }
 
