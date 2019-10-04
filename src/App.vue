@@ -770,7 +770,7 @@
                       </ul>
                     </div>
                   </li>
-                  <li class="mb-8 pb-8">
+                  <li class="mb-8 pb-8 border-b border-gray-200">
                     <div class="px-2">
                       <div class="checkbox-toggle">
                         <input type="checkbox" id="minifyToggle" name="minifyToggle" v-model="transformers.formatting.items.minify.enabled" class="switch" />
