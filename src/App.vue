@@ -835,7 +835,7 @@
                         <label for="plaintextToggle" class="font-semibold">Plaintext</label>
                       </div>
                       <p class="text-gray-600 italic text-sm pl-12">
-                        Uses <a href="https://www.npmjs.com/package/string-strip-html" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">string-strip-html</a> to generate a plaintext version of your HTML.
+                        Uses <a href="https://www.npmjs.com/package/string-strip-html" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener nofollow noreferrer">string-strip-html</a> to generate a plaintext version of your HTML email.
                       </p>
                     </div>
                     <div class="px-2 mt-6" v-show="transformers.formatting.items.plaintext.enabled">
