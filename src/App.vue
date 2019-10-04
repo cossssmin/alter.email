@@ -19,8 +19,8 @@
       <div class="w-full h-full">
         <div class="flex">
           <ul class="flex h-10 font-semibold w-1/2 text-white" :style="panelWidths.input > 0 ? `width:${panelWidths.input}px;` : ''">
-            <li @click="activeInputTab = 'html'" :class="[activeInputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6">Input</li>
-            <li @click="activeInputTab = 'transformers'" :class="[activeInputTab == 'transformers' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6">Transformers</li>
+            <li @click="activeInputTab = 'html'" :class="[activeInputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Input</li>
+            <li @click="activeInputTab = 'transformers'" :class="[activeInputTab == 'transformers' ? 'bg-gray-100 text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Transformers</li>
             <li class="flex items-center">
               <span v-show="html.original" v-cloak class="flex items-center flex-none px-6 text-sm text-white">
                 {{ originalFormattedFileSizeUnix }}
@@ -32,8 +32,8 @@
             </li>
           </ul>
           <ul class="flex h-10 font-semibold w-1/2 text-white ml-1 items-center" :style="panelWidths.output > 0 ? `width:${panelWidths.output}px;` : ''">
-            <li @click="activeOutputTab = 'html'" :class="[activeOutputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6">Output</li>
-            <li @click="activeOutputTab = 'preview'" :class="[activeOutputTab == 'preview' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6">Preview</li>
+            <li @click="activeOutputTab = 'html'" :class="[activeOutputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Output</li>
+            <li @click="activeOutputTab = 'preview'" :class="[activeOutputTab == 'preview' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Preview</li>
             <li class="flex items-center">
               <span v-show="html.transformed" v-cloak class="flex items-center flex-none px-6 text-sm text-white">
                 {{ transformedFormattedFileSizeUnix }}
