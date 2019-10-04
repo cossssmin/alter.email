@@ -70,13 +70,19 @@ Add any number of attributes to any elements in your HTML. Tag names can also be
 
     Add any number of query string parameters to your anchor URLs. You can choose which ones should be encoded, too!
 
-#### Prettify
+#### Formatting
 
-Uses [pretty](https://www.npmjs.com/package/pretty) to pretty-print your HTML code.
+- **Prettify**
 
-#### Minify
+    Uses [pretty](https://www.npmjs.com/package/pretty) to pretty-print your HTML code.
 
-Uses [html-crush](https://www.npmjs.com/package/html-crush) to minify your HTML code.
+- **Minify**
+
+    Uses [html-crush](https://www.npmjs.com/package/html-crush) to minify your HTML code.
+
+- **Plaintext**
+
+    Uses [string-strip-html](https://www.npmjs.com/package/string-strip-html) to generate a plaintext version of your HTML email.
 
 ### UI Features
 
