@@ -1213,14 +1213,6 @@ export default {
 
     $vm.resetGutterPosition()
 
-    if (localStorage.getItem('alter-email-data')) {
-      try {
-        $vm.o = {...$vm.o, ...JSON.parse(localStorage.getItem('alter-email-data'))}
-      } catch (error) {
-        console.error('Could not parse Local Storage data.')
-      }
-    }
-
     document.body.addEventListener('keyup', e => {
       if (e.keyCode === 27) {
         $vm.o.showAbout = false
