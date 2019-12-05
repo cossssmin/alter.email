@@ -84,6 +84,10 @@ Add any number of attributes to any elements in your HTML. Tag names can also be
 
     Uses [string-strip-html](https://www.npmjs.com/package/string-strip-html) to generate a plaintext version of your HTML email.
 
+- **Prevent Widow Words**
+
+    Uses [prevent-widows](https://www.npmjs.com/package/prevent-widows) to replace spaces and hyphens at the end of a string with non-breaking equivalents.
+
 ### UI Features
 
 #### 📱 Responsive Preview
