@@ -965,6 +965,17 @@
                       </ul>
                     </div>
                   </li>
+                  <li class="mb-8 pb-8">
+                    <div class="px-2">
+                      <div class="checkbox-toggle">
+                        <input type="checkbox" id="widowsToggle" name="widowsToggle" v-model="o.transformers.formatting.items.widows.enabled" class="switch" />
+                        <label for="widowsToggle" class="font-semibold">Prevent Widow Words</label>
+                      </div>
+                      <p class="text-gray-600 italic text-sm pl-12">
+                        Enable to prevent widow words globally. When disabled, you can still use a <code class="inline-code">prevent-widows</code> attribute <abbr class="cursor-default" title="Example: <td prevent-widows>some text</td>">on any tag</abbr>, to prevent widow words for text in that element only.
+                      </p>
+                    </div>
+                  </li>
                 </ul>
               </div>
 
@@ -1171,6 +1182,10 @@ export default {
                   },
                 },
               },
+              widows: {
+                name: 'Widows',
+                enabled: false,
+              },
             },
           },
         },
@@ -1199,7 +1214,11 @@ export default {
     $vm.resetGutterPosition()
 
     if (localStorage.getItem('alter-email-data')) {
-      this.o = JSON.parse(localStorage.getItem('alter-email-data'))
+      try {
+        $vm.o = {...$vm.o, ...JSON.parse(localStorage.getItem('alter-email-data'))}
+      } catch (error) {
+        console.error('Could not parse Local Storage data.')
+      }
     }
 
     document.body.addEventListener('keyup', e => {
@@ -1324,7 +1343,6 @@ export default {
   watch: {
     'o.html.original': function (newVal) { // eslint-disable-line
       this.o.html.transformed = this.o.html.transformed == '' ? newVal : this.o.html.transformed
-      // localStorage.setItem('alterEmail', JSON.stringify(this.o))
     },
     'o.transformers.formatting.items.prettify.enabled': function (newVal) {
       if (newVal) {

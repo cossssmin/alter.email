@@ -2,9 +2,11 @@ import juice from 'juice'
 import cheerio from 'cheerio'
 import qs from 'query-string'
 import prettify from 'pretty'
+import posthtml from 'posthtml'
 import { comb } from 'email-comb'
 import isUrl from 'is-url-superb'
 import { crush } from 'html-crush'
+import preventWidows from 'prevent-widows'
 import sixHex from 'color-shorthand-hex-to-six-digit'
 import stripHTML from 'string-strip-html'
 
@@ -140,6 +142,12 @@ exports.handler = async function (event, context, callback) {
     if (config.formatting.items.plaintext.enabled) {
       html = stripHTML(html, config.formatting.items.plaintext.options)
     }
+
+    // Prevent Widows
+    if (config.formatting.items.widows.enabled) {
+      html = html.replace('<body', '<body prevent-widows')
+    }
+    html = await posthtml(preventWidows.posthtml()).process(html).then(res => res.html)
 
     // Replace Strings
     let pairs = config.cleaner.tools.replaceStrings.enabled ? config.cleaner.tools.replaceStrings.pairs : false
