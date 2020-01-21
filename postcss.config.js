@@ -10,17 +10,8 @@ module.exports = {
         './src/**/*.vue',
         './public/**/*.html',
       ],
+      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
       whitelistPatterns: [/CodeMirror/, /cm-/, /gutter/, /swal/],
-      extractors: [
-        {
-          extractor: class TailwindExtractor {
-            static extract(content) {
-              return content.match(/[A-z0-9-:\/]+/g) || [];
-            }
-          },
-          extensions: ['vue', 'html']
-        }
-      ]
     }) : "",
   ],
 }
