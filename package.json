@@ -18,7 +18,7 @@
     "vue-codemirror-lite": "^1.0.4"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.2.0",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@vue/cli-plugin-babel": "^4.4.6",
     "@vue/cli-plugin-eslint": "^4.4.1",
     "@vue/cli-service": "^4.4.1",
