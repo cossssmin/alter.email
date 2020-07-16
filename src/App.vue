@@ -32,8 +32,8 @@
             </li>
           </ul>
           <ul class="flex h-10 font-semibold w-1/2 text-white ml-1 items-center" :style="o.panelWidths.output > 0 ? `width:${o.panelWidths.output}px;` : ''">
-            <li @click="o.activeOutputTab = 'html'" :class="[o.activeOutputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Output</li>
             <li @click="o.activeOutputTab = 'preview'" :class="[o.activeOutputTab == 'preview' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Preview</li>
+            <li @click="o.activeOutputTab = 'html'" :class="[o.activeOutputTab == 'html' ? 'bg-white text-gray-800 cursor-default' : 'cursor-pointer hover:text-gray-200']" class="inline-block rounded-t py-2 px-6 z-50">Transformed</li>
             <li class="flex items-center">
               <span v-show="o.html.transformed" v-cloak class="flex items-center flex-none px-6 text-sm text-white">
                 {{ transformedFormattedFileSizeUnix }}
@@ -999,7 +999,7 @@
               allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor"
               allowtransparency="true"
               allowpaymentrequest="true"
-              :srcdoc="o.html.transformed || o.html.original"
+              :srcdoc="o.html.original"
             >
             </iframe>
           </div>
@@ -1036,7 +1036,7 @@ export default {
           transformed: '',
         },
         activeInputTab: 'html',
-        activeOutputTab: 'html',
+        activeOutputTab: 'preview',
         activeTransformerTab: 'inliner',
         iframeWidth: 0,
         panelWidths: {
@@ -1307,6 +1307,7 @@ export default {
         } else {
           if (response.html) {
             $vm.o.html.transformed = response.html
+            $vm.$refs.preview.srcdoc = response.html
 
             if (process.env.NODE_ENV !== 'development') {
               // eslint-disable-next-line
@@ -1333,9 +1334,6 @@ export default {
     },
   },
   watch: {
-    'o.html.original': function (newVal) { // eslint-disable-line
-      this.o.html.transformed = this.o.html.transformed == '' ? newVal : this.o.html.transformed
-    },
     'o.transformers.formatting.items.prettify.enabled': function (newVal) {
       if (newVal) {
         this.o.transformers.formatting.items.minify.enabled = false
