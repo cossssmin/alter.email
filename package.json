@@ -9,7 +9,7 @@
   "dependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
     "codemirror-theme-github": "^1.0.0",
-    "netlify-lambda": "^1.6.3",
+    "netlify-lambda": "^2.0.1",
     "postcss-import": "^12.0.1",
     "split.js": "^1.6.2",
     "sweetalert2": "^9.17.1",
