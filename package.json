@@ -14,7 +14,7 @@
     "split.js": "^1.6.2",
     "sweetalert2": "^9.17.1",
     "tailwindcss": "^1.6.0",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-codemirror-lite": "^1.0.4"
   },
   "devDependencies": {
@@ -26,7 +26,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-cli-plugin-netlify-lambda": "^0.1.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,
